@@ -116,9 +116,9 @@ public class login extends javax.swing.JFrame {
         boolean respuesta = iniciarSesion(nombre, contrasena);
         
         if(respuesta){
-            menu Menu = new menu();
+            rules Rules = new rules();
             dispose();
-            Menu.setVisible(true);
+            Rules.setVisible(true);
             return;
         } 
         
