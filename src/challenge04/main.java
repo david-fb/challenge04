@@ -14,7 +14,7 @@ public class main {
 
     public static String[] nombres = new String[10];
     public static String[] contrasenas = new String[10];
-    
+    public static int alma_etapa;
     static int tUsuario = 0;
 
     public static void main(String args[]) {

@@ -105,7 +105,7 @@ public class menuHistoria extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void BtnAlmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlmaActionPerformed
-       allmaIniccio Alma = new allmaIniccio();
+       alma Alma = new alma();
         dispose();
         Alma.setVisible(true);
     }//GEN-LAST:event_BtnAlmaActionPerformed
