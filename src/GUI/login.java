@@ -35,33 +35,51 @@ public class login extends javax.swing.JFrame {
         txtUser = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JPasswordField();
         BtnLogin = new javax.swing.JButton();
+        lbl_btn_login = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CHALLENGE 04");
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Contraseña");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Usuario");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
+        txtUser.setCaretColor(new java.awt.Color(0, 153, 51));
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 200, -1));
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 200, -1));
+        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 200, -1));
 
+        txtContrasena.setCaretColor(new java.awt.Color(0, 153, 51));
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 200, -1));
+
+        BtnLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        BtnLogin.setForeground(new java.awt.Color(255, 255, 255));
         BtnLogin.setText("Iniciar Sesión");
+        BtnLogin.setBorder(null);
+        BtnLogin.setBorderPainted(false);
+        BtnLogin.setContentAreaFilled(false);
         BtnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnLogin.setFocusPainted(false);
         BtnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnLoginMouseClicked(evt);
@@ -72,10 +90,14 @@ public class login extends javax.swing.JFrame {
                 BtnLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 180, -1));
+        jPanel1.add(BtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 170, 40));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
+        lbl_btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        lbl_btn_login.setText("jLabel5");
+        jPanel1.add(lbl_btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 200, 60));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Crear cuenta");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,21 +105,20 @@ public class login extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
+
+        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-2.png"))); // NOI18N
+        jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -179,6 +200,8 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_background;
+    private javax.swing.JLabel lbl_btn_login;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

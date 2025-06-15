@@ -27,74 +27,118 @@ public class menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_icon = new javax.swing.JLabel();
+        btn_versus = new javax.swing.JButton();
+        lbl_btn_versus = new javax.swing.JLabel();
+        btn_salir = new javax.swing.JButton();
+        img_btn_salir = new javax.swing.JLabel();
+        btn_jugador1 = new javax.swing.JButton();
+        lbl_btn_jugador1 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Challenge04 - Menú Principal");
-        setPreferredSize(new java.awt.Dimension(500, 400));
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Modo Historia");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        lbl_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        jPanel1.add(lbl_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+
+        btn_versus.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        btn_versus.setForeground(new java.awt.Color(255, 255, 255));
+        btn_versus.setText("Versus");
+        btn_versus.setBorder(null);
+        btn_versus.setBorderPainted(false);
+        btn_versus.setContentAreaFilled(false);
+        btn_versus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_versus.setFocusPainted(false);
+        jPanel1.add(btn_versus, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 160, 50));
+
+        lbl_btn_versus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_versus, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 200, 70));
+
+        btn_salir.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        btn_salir.setForeground(new java.awt.Color(255, 255, 255));
+        btn_salir.setText("Salir");
+        btn_salir.setBorder(null);
+        btn_salir.setBorderPainted(false);
+        btn_salir.setContentAreaFilled(false);
+        btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_salir.setFocusPainted(false);
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_salirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 285, 30));
-
-        jButton2.setText("Jugador 1");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 285, 30));
-
-        jButton3.setText("Versus");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 285, 30));
-
-        jButton4.setText("Salir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        btn_salir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btn_salirKeyPressed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 285, 30));
+        jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 160, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+        img_btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(img_btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 200, 70));
+
+        btn_jugador1.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        btn_jugador1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_jugador1.setText("Jugador 1");
+        btn_jugador1.setBorder(null);
+        btn_jugador1.setBorderPainted(false);
+        btn_jugador1.setContentAreaFilled(false);
+        btn_jugador1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_jugador1.setFocusPainted(false);
+        jPanel1.add(btn_jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 160, 50));
+
+        lbl_btn_jugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 200, 70));
+
+        jButton7.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Modo Historia");
+        jButton7.setBorder(null);
+        jButton7.setBorderPainted(false);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setFocusPainted(false);
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 160, 50));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 70));
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background.png"))); // NOI18N
+        jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_salirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_salirKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_btn_salirKeyPressed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
         // TODO add your handling code here:
-        login Login = new login();
-        dispose();
-        Login.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,11 +176,16 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_jugador1;
+    private javax.swing.JButton btn_salir;
+    private javax.swing.JButton btn_versus;
+    private javax.swing.JLabel img_btn_salir;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lbl_btn_jugador1;
+    private javax.swing.JLabel lbl_btn_versus;
+    private javax.swing.JLabel lbl_icon;
     // End of variables declaration//GEN-END:variables
 }
