@@ -5,6 +5,7 @@
 package GUI;
 
 import GUI.historia.menuHistoria;
+import java.awt.Color;
 
 /**
  *
@@ -58,7 +59,7 @@ public class menu extends javax.swing.JFrame {
         btn_versus.setBorder(null);
         btn_versus.setBorderPainted(false);
         btn_versus.setContentAreaFilled(false);
-        btn_versus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_versus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_versus.setFocusPainted(false);
         btn_versus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +77,7 @@ public class menu extends javax.swing.JFrame {
         btn_salir.setBorder(null);
         btn_salir.setBorderPainted(false);
         btn_salir.setContentAreaFilled(false);
-        btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_salir.setFocusPainted(false);
         btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +100,7 @@ public class menu extends javax.swing.JFrame {
         btn_jugador1.setBorder(null);
         btn_jugador1.setBorderPainted(false);
         btn_jugador1.setContentAreaFilled(false);
-        btn_jugador1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_jugador1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_jugador1.setFocusPainted(false);
         btn_jugador1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +118,7 @@ public class menu extends javax.swing.JFrame {
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.setFocusPainted(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +150,7 @@ public class menu extends javax.swing.JFrame {
 
     private void btn_salirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_salirKeyPressed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btn_salirKeyPressed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
@@ -159,18 +160,22 @@ public class menu extends javax.swing.JFrame {
 
     private void btn_jugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jugador1ActionPerformed
         // TODO add your handling code here:
-        new modojugador(false).setVisible(true);
+        dispose();
+        modojugador modoJugador = new modojugador(false);
+        modoJugador.setVisible(true);
     }//GEN-LAST:event_btn_jugador1ActionPerformed
 
     private void btn_versusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_versusActionPerformed
         // TODO add your handling code here:
-        new modojugador(true).setVisible(true);
+        dispose();
+        modojugador modoJugador = new modojugador(true);
+        modoJugador.setVisible(true);
     }//GEN-LAST:event_btn_versusActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-     menuHistoria menuH = new menuHistoria();
-     menuH.setVisible(true);
-     dispose();
+        menuHistoria menuH = new menuHistoria();
+        menuH.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**

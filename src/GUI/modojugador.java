@@ -43,7 +43,6 @@ public class modojugador extends javax.swing.JFrame {
         
         llenarComponentes(0);
         jLabel3.setVisible(multiplayer);
-        
 
     }
     
