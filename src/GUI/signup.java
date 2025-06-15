@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
+import GUI.message.customMessage;
 import static challenge04.main.*;
 import javax.swing.JOptionPane;
 
@@ -127,12 +128,16 @@ public class signup extends javax.swing.JFrame {
         String contrasena = txtContrasena.getText();
         boolean respuesta = crearUsuario(nombre, contrasena);
         if (respuesta){
-            JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "CHALLENGE 04",JOptionPane.INFORMATION_MESSAGE);
+            customMessage dialog = new customMessage(this, true, "Usuario registrado correctamente");
+            dialog.setVisible(true);
+            //JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "CHALLENGE 04",JOptionPane.INFORMATION_MESSAGE);
             dispose();
             login Login = new login();
             Login.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(this, "No se puede registrar el usuario", "CHALLENGE 04",JOptionPane.ERROR_MESSAGE);
+            customMessage dialog = new customMessage(this, true, "No se puede registrar el usuario");
+            dialog.setVisible(true);
+            //JOptionPane.showMessageDialog(this, "No se puede registrar el usuario", "CHALLENGE 04",JOptionPane.ERROR_MESSAGE);
             dispose();
             login Login = new login();
             Login.setVisible(true);

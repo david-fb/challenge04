@@ -5,7 +5,7 @@
 package GUI;
 import static challenge04.main.*;
 import javax.swing.JOptionPane;
-
+import GUI.message.*;
 /**
  *
  * @author WINDOWS
@@ -142,8 +142,9 @@ public class login extends javax.swing.JFrame {
             Rules.setVisible(true);
             return;
         } 
-        
-        JOptionPane.showMessageDialog(this, "Usuario y/o Contraseña incorrecto", "CHALLENGE 04", JOptionPane.ERROR_MESSAGE);
+
+        customMessage dialog = new customMessage(this, true, "Usuario y/o Contraseña incorrecto");
+        dialog.setVisible(true);
     }//GEN-LAST:event_BtnLoginActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
