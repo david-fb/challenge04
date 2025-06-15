@@ -6,17 +6,21 @@ package GUI;
 import static challenge04.main.*;
 import javax.swing.JOptionPane;
 import GUI.message.*;
+import javax.swing.ImageIcon;
 /**
  *
  * @author WINDOWS
  */
 public class login extends javax.swing.JFrame {
 
+    ImageIcon hoverBtnIcon, defaultBtnIcon;
     /**
      * Creates new form login
      */
     public login() {
         initComponents();
+        hoverBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-active.png"));
+        defaultBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn.png"));
     }
 
     /**
@@ -78,11 +82,17 @@ public class login extends javax.swing.JFrame {
         BtnLogin.setBorder(null);
         BtnLogin.setBorderPainted(false);
         BtnLogin.setContentAreaFilled(false);
-        BtnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnLogin.setFocusPainted(false);
         BtnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnLoginMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BtnLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnLoginMouseExited(evt);
             }
         });
         BtnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +103,6 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(BtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 170, 40));
 
         lbl_btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
-        lbl_btn_login.setText("jLabel5");
         jPanel1.add(lbl_btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 200, 60));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
@@ -158,6 +167,16 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_BtnLoginMouseClicked
+
+    private void BtnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnLoginMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_login.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_BtnLoginMouseEntered
+
+    private void BtnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnLoginMouseExited
+        // TODO add your handling code here:
+        lbl_btn_login.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_BtnLoginMouseExited
 
     /**
      * @param args the command line arguments
