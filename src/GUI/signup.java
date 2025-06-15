@@ -5,8 +5,8 @@
 package GUI;
 import GUI.message.customMessage;
 import static challenge04.main.*;
+import java.awt.*;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class signup extends javax.swing.JFrame {
 
-    ImageIcon hoverBtnIcon, defaultBtnIcon;
+    private Point mouseClickPoint;
+    ImageIcon hoverBtnIcon, defaultBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
     /**
      * Creates new form sign up
      */
@@ -22,6 +23,12 @@ public class signup extends javax.swing.JFrame {
         initComponents();
         hoverBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-active.png"));
         defaultBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn.png"));
+        
+        hoverBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close-active.png"));
+        defaultBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"));
+        
+        hoverBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini-active.png"));
+        defaultBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"));
     }
 
     /**
@@ -34,12 +41,15 @@ public class signup extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        pnl_bar = new javax.swing.JPanel();
+        lbl_close_window = new javax.swing.JLabel();
+        lbl_mini_window = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JPasswordField();
-        btnBack = new javax.swing.JButton();
         BtnRegistrar = new javax.swing.JButton();
         lbl_btn_registrar = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
@@ -57,20 +67,47 @@ public class signup extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+        pnl_bar.setOpaque(false);
+        pnl_bar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                pnl_barMouseDragged(evt);
+            }
+        });
+        pnl_bar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnl_barMousePressed(evt);
+            }
+        });
+        pnl_bar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Usuario");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+        lbl_close_window.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"))); // NOI18N
+        lbl_close_window.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbl_close_window.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_close_windowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_close_windowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_close_windowMouseExited(evt);
+            }
+        });
+        pnl_bar.add(lbl_close_window, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, -1, 50));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Contraseña");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 200, -1));
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 200, -1));
+        lbl_mini_window.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"))); // NOI18N
+        lbl_mini_window.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_mini_windowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_mini_windowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_mini_windowMouseExited(evt);
+            }
+        });
+        pnl_bar.add(lbl_mini_window, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 50, 50));
 
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,7 +124,24 @@ public class signup extends javax.swing.JFrame {
                 btnBackMouseClicked(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, -1));
+        pnl_bar.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, -1));
+
+        jPanel1.add(pnl_bar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Usuario");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Contraseña");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 200, -1));
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 200, -1));
 
         BtnRegistrar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         BtnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,7 +163,7 @@ public class signup extends javax.swing.JFrame {
                 BtnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 170, 40));
+        jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 180, 40));
 
         lbl_btn_registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
         jPanel1.add(lbl_btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 190, -1));
@@ -174,6 +228,49 @@ public class signup extends javax.swing.JFrame {
         lbl_btn_registrar.setIcon(defaultBtnIcon);
     }//GEN-LAST:event_BtnRegistrarMouseExited
 
+    private void lbl_close_windowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_close_windowMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_lbl_close_windowMouseClicked
+
+    private void lbl_close_windowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_close_windowMouseEntered
+        // TODO add your handling code here:
+        lbl_close_window.setIcon(hoverBtnCloseIcon);
+    }//GEN-LAST:event_lbl_close_windowMouseEntered
+
+    private void lbl_close_windowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_close_windowMouseExited
+        // TODO add your handling code here:
+        lbl_close_window.setIcon(defaultBtnCloseIcon);
+    }//GEN-LAST:event_lbl_close_windowMouseExited
+
+    private void lbl_mini_windowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_mini_windowMouseClicked
+        // TODO add your handling code here:
+        setState(Frame.ICONIFIED);
+    }//GEN-LAST:event_lbl_mini_windowMouseClicked
+
+    private void lbl_mini_windowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_mini_windowMouseEntered
+        // TODO add your handling code here:
+        lbl_mini_window.setIcon(hoverBtnMiniIcon);
+    }//GEN-LAST:event_lbl_mini_windowMouseEntered
+
+    private void lbl_mini_windowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_mini_windowMouseExited
+        // TODO add your handling code here:
+        lbl_mini_window.setIcon(defaultBtnMiniIcon);
+    }//GEN-LAST:event_lbl_mini_windowMouseExited
+
+    private void pnl_barMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_barMouseDragged
+        // TODO add your handling code here:
+        Point frameLocation = getLocation();
+        int x = frameLocation.x + evt.getX() - mouseClickPoint.x;
+        int y = frameLocation.y + evt.getY() - mouseClickPoint.y;
+        setLocation(x, y);
+    }//GEN-LAST:event_pnl_barMouseDragged
+
+    private void pnl_barMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_barMousePressed
+        // TODO add your handling code here:
+        mouseClickPoint = evt.getPoint();
+    }//GEN-LAST:event_pnl_barMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -218,6 +315,9 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_btn_registrar;
+    private javax.swing.JLabel lbl_close_window;
+    private javax.swing.JLabel lbl_mini_window;
+    private javax.swing.JPanel pnl_bar;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
