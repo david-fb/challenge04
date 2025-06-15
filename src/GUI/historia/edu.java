@@ -5,40 +5,40 @@
 package GUI.historia;
 
 import static challenge04.main.vidas_historia;
-import static challenge04.main.alma_etapa;
+import static challenge04.main.edu_etapa;
 
 /**
  *
  * @author david
  */
-public class alma extends javax.swing.JFrame {
+public class edu extends javax.swing.JFrame {
 
     String[] titulos = {
-        "ALMA",
-        "Importancia del cafe",
-        "Expedicion de alma",
-        "Alma en Riohacha",
-        "Alma en Cartagena",
-        "Pasantia en Quibdo"
+        "EDU",
+        "EDU EN EL CAQUETA",
+        "JOVENES ARHUACOS",
+        "EL PATIA CAUCA",
+        "TUMACO",
+        "RETORNO A CARTAGENA"
     };
     String[] contextos = {
-        "Alma nace del sentimiento y necesidad de muchos de los niños de Uribia que pasan hambre diariamente, por eso Alma nace con el fin de combatir las necesidades básicas insatisfechas. La inseguridad alimentaria y desnutrición mediante acciones y compartiendo conocimiento que desarrollara en su aventura, Alma debe adquirir conocimiento, ayúdala a pasar su educación en la escuela Alfonso López Pumarejoro pero debe conocer sobre sus tierras de origen. Alma requiere aprender primero bases e información importante para combatir el hambre, pero como todo niño debe empezar por la escuela.",
-        "La producción de café en Urumita es fundamental para la economía local, ya que más del 2.83% de la producción nacional proviene de esta región. Urumita, conocida como El Jardín del Sur de La Guajira",
-        "Alma en una de las expediciones de la escuela viaja al municipio vecino de Distracción ve cultivos de frijol guajiro secos por el clima.",
-        "Alma ha crecido en su manera de pensar y visualizar su entorno por lo cual sigue su educación en Riohacha.",
-        "En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia. Una nutricionista le explica: En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia. Una nutricionista le explica:",
-        "Alma aprendió mucho. Finalmente deciden hacer una pasantía en el Quibdo en el Barrio el reposo"
+        "Edu es un sabio viajero que recorre Colombia compartiendo conocimientos con niños, jóvenes y adultos. Guía natural y respetuoso de todas las culturas, defiende con pasión el derecho a una educación de calidad.",
+        "Edu llega a una comunidad rural en Caquetá, donde los niños aprenden debajo de un árbol, sin cuadernos ni pupitres",
+        "Edu se encuentra con jovenes de talla mediana, piel oscura, rostro ovalado y nariz recta y aguileña son jovenes Arhuacos",
+        "Edu visita un colegio urbano en el Patia, donde los jóvenes dicen que <<la escuela no sirve para la vida real.>>",
+        "En TUMACO, es una realidad compleja marcada por la presencia de diversos actores armados que se disputan el control territorial para el ejercicio de economías ilícitas",
+        "Edu recorrio, gran parte del país repartiendo conocimiento y aprendiendo cada vez de los diferentes pueblos visitados"
     };
 
-    public alma() {
+    public edu() {
         initComponents();
 
         BtnResponder.setVisible(false);
         BtnResponder.setEnabled(false);
         lbl_btn_responder.setVisible(false);
 
-        LbTitulo.setText(titulos[alma_etapa]);
-        TAparrafo.setText(contextos[alma_etapa]);
+        LbTitulo.setText(titulos[edu_etapa]);
+        TAparrafo.setText(contextos[edu_etapa]);
         switch (vidas_historia) {
             case 1 -> {
                 lbvida1.setVisible(true);
@@ -87,7 +87,6 @@ public class alma extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Challenge04");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(700, 500));
         setMinimumSize(new java.awt.Dimension(700, 500));
         setUndecorated(true);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -181,49 +180,48 @@ public class alma extends javax.swing.JFrame {
     }
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
-        System.out.print(alma_etapa);
-        if (alma_etapa == 0) {
+        System.out.print(edu_etapa);
+        if (edu_etapa == 0) {
             mostrarBoton();
-            LbTitulo.setText("ALMA EN LA ESCUELA");
+            LbTitulo.setText("EL GÉNESIS DE EDU");
             TAparrafo.setText("""
-                              La guajira en materia agrícola produce diferentes productos como lo son: maíz en los municipios de Hatonuevo, Albania, el Molino, San Juan del Cesar y Barrancas, el plátano en los municipios de Dibulla, el arroz en el municipio de Distracción y Fonseca, el café en La Jagua del Pilar, Villanueva y Urumita, el frijol en Maicao y la yuca en Riohacha, según el EVA 2021.
-                              Alma debe identificar sus raíces y los productos autóctonas de la zona geográfica.
+                              Su vocación nació en Cartagena, inspirado por su abuela, una maestra jubilada que le contaba historias de niños en lugares remotos donde no llegaban ni libros ni maestros.
+                              Desde entonces, Edu se convirtió en símbolo del poder transformador del aprendizaje.
                               															
                               """);
 
         }
 
-        if (alma_etapa == 1) {
+        if (edu_etapa == 1) {
             mostrarBoton();
-            LbTitulo.setText("URIMITA");
+            LbTitulo.setText("ESCUELA EN EL CAQUETA");
             TAparrafo.setText("""
-                              Urumita es hogar de por lo menos 500 familias que dependen del café para su sustento. Urumita produce café arábigo de altura, pero no tienen maquinaria para procesarlo. Los intermediarios les pagan 2,000 por kilo y lo venden en 20,000.""");
+                              La maestra de la escuela le cuenta que no tienen conexión a internet ni materiales, pero sí muchas ganas de aprender. """);
         }
-        if (alma_etapa == 2) {
+        if (edu_etapa == 2) {
             mostrarBoton();
-            LbTitulo.setText("MUNICIPIO DE DISTRACOM");
+            LbTitulo.setText("REUNION CON LOS JOVENES");
             TAparrafo.setText("""
-                              Un nativo agrónomo le dice: Que esta semilla ancestral resiste sequías, pero casi no se usa, que la mayoría  de los jóvenes se van a Venezuela por falta de oportunidades. """);
+                              En un encuentro con estos jóvenes, Edu escucha cómo los saberes tradicionales son ignorados en la escuela formal. Los estudiantes se sienten poco representados """);
         }
-        if (alma_etapa == 3) {
+        if (edu_etapa == 3) {
             mostrarBoton();
-            LbTitulo.setText("RIOHACHA");
+            LbTitulo.setText("EL PATIA");
             TAparrafo.setText("""
-                              Una de las primeras cosas que observa es como niños muy pequeños y parecidos a los de su natal municipio de igual manera flacos buscan comida hasta en cestas de basura. Lleva su inquietud a su maestra le dice que
-                              El pescado es el principal alimento, pero la contaminación por plásticos redujo la pesca en 40% (INVEMAR, 2023) y Los comedores comunitarios solo dan alimento 3 días a la semana.""");
+                              Una profesora del interior del Patia, de un Pueblo de nombre La Fonda, le comenta que muchos desertan por falta de motivación""");
         }
-        if (alma_etapa == 4) {
+        if (edu_etapa == 4) {
             mostrarBoton();
-            LbTitulo.setText("CARTAGENA");
+            LbTitulo.setText("TUMACO");
             TAparrafo.setText("""
-                              En categena de Indias, Hay huertos urbanos, pero las personas no saben cocinar lo que cosechan. """);
+                              En Tumaco, Edu visita una escuela afectada por el conflicto armado, Algunos niños han perdido familiares, y hay miedo de ir a clase.""");
         }
-        if (alma_etapa == 5) {
+        if (edu_etapa == 5) {
             mostrarBoton();
-            LbTitulo.setText("EMPODERAMIENTO");
+            LbTitulo.setText("COMPARTIENDO CONOCIMIENTO");
             TAparrafo.setText("""
-                              Alma conoce a mujeres afro que cultivan chontaduro, pero no pueden venderlo. Una líder le cuenta:
-                              Los mercados están lejos y el transporte es caro y los hombres controlan los ingresos familiares.""");
+                              De regreso en Cartagena, Edu organiza un festival de aprendizaje con niños, docentes y familias de todo el país, 
+                              Comparte historias de su viaje y celebra los logros de cada comunidad.""");
         }
 
 
@@ -237,9 +235,9 @@ public class alma extends javax.swing.JFrame {
         BtnResponder.setEnabled(false);
         lbl_btn_responder.setVisible(false);
         LbContinuar.setVisible(true);
-        almaPreguntas Alma = new almaPreguntas();
+        eduPreguntas Edu = new eduPreguntas();
         dispose();
-        Alma.setVisible(true);
+        Edu.setVisible(true);
     }//GEN-LAST:event_BtnResponderActionPerformed
 
     /**
@@ -259,14 +257,18 @@ public class alma extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(alma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(edu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(alma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(edu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(alma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(edu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(alma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(edu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -275,7 +277,7 @@ public class alma extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new alma().setVisible(true);
+                new edu().setVisible(true);
             }
         });
     }

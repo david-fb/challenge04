@@ -33,7 +33,7 @@ public class menuHistoria extends javax.swing.JFrame {
         lbl_btn_limbo = new javax.swing.JLabel();
         BtnAlma = new javax.swing.JButton();
         lbl_btn_alma = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        BtnEDu = new javax.swing.JButton();
         lbl_btn_edu = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
         lbl_btn_edu1 = new javax.swing.JLabel();
@@ -87,14 +87,19 @@ public class menuHistoria extends javax.swing.JFrame {
         lbl_btn_alma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
         jPanel1.add(lbl_btn_alma, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 190, 60));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Edu (ODS 4) (bloqueado)");
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 330, 170, 40));
+        BtnEDu.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        BtnEDu.setForeground(new java.awt.Color(255, 255, 255));
+        BtnEDu.setText("Edu (ODS 4) (bloqueado)");
+        BtnEDu.setBorder(null);
+        BtnEDu.setBorderPainted(false);
+        BtnEDu.setContentAreaFilled(false);
+        BtnEDu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnEDu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEDuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnEDu, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 330, 170, 40));
 
         lbl_btn_edu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
         jPanel1.add(lbl_btn_edu, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 190, 60));
@@ -157,6 +162,12 @@ public class menuHistoria extends javax.swing.JFrame {
         Alma.setVisible(true);
     }//GEN-LAST:event_BtnAlmaActionPerformed
 
+    private void BtnEDuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEDuActionPerformed
+       edu Edu = new edu();
+        dispose();
+        Edu.setVisible(true);
+    }//GEN-LAST:event_BtnEDuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -197,9 +208,9 @@ public class menuHistoria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAlma;
+    private javax.swing.JButton BtnEDu;
     private javax.swing.JButton BtnLimbo;
     private javax.swing.JButton btn_volver;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_background;

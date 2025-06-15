@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author WINDOWS
+ * @author Jimmi
  */
 public class signup extends javax.swing.JFrame {
 
@@ -136,7 +136,7 @@ public class signup extends javax.swing.JFrame {
             login Login = new login();
             Login.setVisible(true);
         }else{
-            customMessage dialog = new customMessage(this, true, "No se puede registrar el usuario");
+            customMessage dialog = new customMessage(this, true, "Usuario ya existe, intente nuevamente");
             dialog.setVisible(true);
             //JOptionPane.showMessageDialog(this, "No se puede registrar el usuario", "CHALLENGE 04",JOptionPane.ERROR_MESSAGE);
             dispose();

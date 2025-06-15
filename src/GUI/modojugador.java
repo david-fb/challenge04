@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author HP
+ * @author Jhon
  */
 public class modojugador extends javax.swing.JFrame {
 

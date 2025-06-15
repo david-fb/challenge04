@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import GUI.message.*;
 /**
  *
- * @author WINDOWS
+ * @author Jimmi
  */
 public class login extends javax.swing.JFrame {
 

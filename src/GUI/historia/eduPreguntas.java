@@ -5,8 +5,8 @@
 package GUI.historia;
 
 import GUI.message.customMessage;
-import static challenge04.main.alma_etapa;
-import static challenge04.main.alma_correcta;
+import static challenge04.main.edu_etapa;
+import static challenge04.main.edu_correcta;
 import static challenge04.main.vidas_historia;
 import javax.sound.sampled.*;
 import java.io.InputStream;
@@ -16,50 +16,51 @@ import javax.swing.JOptionPane;
  *
  * @author Jimmi
  */
-public class almaPreguntas extends javax.swing.JFrame {
+public class eduPreguntas extends javax.swing.JFrame {
 
     String[] preguntas = {
-        "¿Qué producto se da en su natal Urumita?",
-        "El pensamiento que tiene a Alma respecto a esto sería, Que en futuro se podría:",
-        "El nativo le pregunta a Alma ¿Qué acción revitalizaría la economía local? ",
-        "La maestra le pregunta a Alma: ¿Qué solución combate el hambre y protege el mar simultáneamente?",
-        "¿Qué proyecto integrado combate el hambre aquí?",
-        "¿Cómo empoderar a estas mujeres y combatir el hambre? "
+        "¿Cuál fue la inspiración inicial de Edu para dedicarse a la educación?",
+        "Qué acción impulsa Edu como parte de la educación de calidad",
+        "¿Qué solución propone Edu desde la visión de educación inclusiva? ",
+        "¿Cómo mejora Edu esta situación?",
+        "¿Qué enfoque propone Edu como Embajador de la educación de calidad?",
+        "¿Qué principio resume el legado de Edu y educación de calidad? "
     };
 
     String[][] opciones = {
-        {"Maíz", "Arroz", "Café", "Frijol"},
-        {"Pedir subsidios al gobierno", "Montar un taller local para tostar y empacar el café", "Vender el café a multinacionales", "Cambiar a cultivos de coca"},
-        {"Usar transgénicos para aumentar producción", "Crear un banco de semillas de frijol guajiro y venderlo como producto gourmet", "Convertir la tierra en pastizales para ganado", "Esperar lluvias"},
-        {"Repartir más comida procesada ", "Crear una red de pesca sostenible y limpieza de manglares", "Importar carne de res", "Construir un puerto pesquero industrial"},
-        {"Dar bonos para comprar en supermercados", "Talleres de cocina con productos de huertos + venta de excedentes", "Repartir suplementos de hierro ", "Construir un McDonald`s comunitario"},
-        {"Pedir ayuda a ONGs internacionales", "Crear una cooperativa de mujeres para hacer harina de chontaduro ", "Esperar a que el gobierno construya carreteras", "Vender las tierras a empresas"}
+        {"Impone más tareas y castigos.", "Su abuela, una maestra jubilada que le contaba historias sobre la falta de acceso a la educación", "Un profesor extranjero que lo visitó en la infancia", "Un documental que vio sobre países desarrollados."},
+        {"Exigir que se evalúe a los estudiantes con pruebas nacionales", "Reunir a la comunidad para crear un aula abierta y traer libros físicos y digitales", "Enseñar solo a los niños con buenas notas", "Pedir que los niños viajen a la ciudad más cercana"},
+        {"Eliminar los contenidos indígenas del currículo", "Traer profesores extranjeros con doctorado", "Incluir saberes ancestrales en el currículo escolar, respetando la lengua y cosmovisión ","Imponer libros en español técnico"},
+        {"Organiza un programa de emprendimiento juvenil con proyectos reales del barrio", "Impone más tareas y castigos ", "Quita las clases de arte y deporte", "Solo premia a los estudiantes con promedio alto"},
+        {"Ignorar el contexto emocional y seguir el plan de estudios ", "Promover espacios seguros y escuelas como zonas de paz con apoyo psicosocial ", "Cerrar la escuela temporalmente ", "Castigar a los que faltan mucho"},
+        {"Aprender es un privilegio", "Solo los que terminan la universidad tienen valor ", "Todos tienen derecho a una educación de calidad, sin importar su origen", "Solo los niños urbanos deben ir al colegio"}
     };
 
-    public almaPreguntas() {
+    public eduPreguntas() {
         initComponents();
         //reproducirSonido();
-        int i = alma_etapa;
+        int i = edu_etapa;
         switch (vidas_historia) {
-            case 1:
+            case 1 -> {
                 lbvida1.setVisible(true);
                 lbvida2.setVisible(false);
                 lbvida3.setVisible(false);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 lbvida1.setVisible(true);
                 lbvida2.setVisible(true);
                 lbvida3.setVisible(false);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 lbvida1.setVisible(true);
                 lbvida2.setVisible(true);
                 lbvida3.setVisible(true);
-                break;
-            default:
+            }
+            default -> {
                 lbvida1.setVisible(false);
                 lbvida2.setVisible(false);
                 lbvida3.setVisible(false);
+            }
         }
         LbPregunta.setText(preguntas[i]);
         RB1.setText(opciones[i][0]);
@@ -102,7 +103,6 @@ public class almaPreguntas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CHALLENGE 04");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(700, 500));
         setMinimumSize(new java.awt.Dimension(700, 500));
         setUndecorated(true);
         setResizable(false);
@@ -212,34 +212,36 @@ public class almaPreguntas extends javax.swing.JFrame {
                 alma_respuesta = 4;
             }
 
-            if (alma_correcta[alma_etapa] == alma_respuesta) {
-                alma_etapa++;
+            if (edu_correcta[edu_etapa] == alma_respuesta) {
+                edu_etapa++;
                 LbPregunta.setText("");
                 dispose();
-                if (alma_etapa < 6 && vidas_historia > 0) {
-                    alma Alma = new alma();
-                    Alma.setVisible(true);
+                if (edu_etapa < 6 && vidas_historia > 0) {
+                    edu Edu = new edu();
+                    dispose();
+                    Edu.setVisible(true);
                 } else {
                     menuHistoria menuH = new menuHistoria();
                     dispose();
 
                     menuH.setVisible(true);
                 }
-                
+
             } else {
                 //JOptionPane.showMessageDialog(this, "Error, intente nuevamente");
                 customMessage dialog = new customMessage(this, true, "Incorrecto, vamos de nuevo");
                 dialog.setVisible(true);
                 vidas_historia--;
                 dispose();
-                if (alma_etapa < 6 && vidas_historia > 0) {
-                    alma Alma = new alma();
-                    Alma.setVisible(true);
+                if (edu_etapa < 6 && vidas_historia > 0) {
+                    edu Edu = new edu();
+                    dispose();
+                    Edu.setVisible(true);
                 } else {
                     menuHistoria menuH = new menuHistoria();
                     dispose();
                     vidas_historia = 3;
-                    alma_etapa = 0;
+                    edu_etapa = 0;
                     menuH.setVisible(true);
                 }
             }
@@ -255,7 +257,7 @@ public class almaPreguntas extends javax.swing.JFrame {
     private void reproducirSonido() {
         try {
             // Esta línea busca el archivo desde la carpeta src/sonidos/
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("sonidos/avesDeFondo.wav");
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("sonidos/bosquesNaturales.wav");
 
             if (inputStream == null) {
                 JOptionPane.showMessageDialog(this, "Archivo no encontrado. Verifica la ruta y el nombre.");
@@ -289,21 +291,23 @@ public class almaPreguntas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(almaPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(eduPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(almaPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(eduPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(almaPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(eduPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(almaPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(eduPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new almaPreguntas().setVisible(true);
+                new eduPreguntas().setVisible(true);
             }
         });
     }
