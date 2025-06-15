@@ -4,6 +4,7 @@
  */
 package GUI.historia;
 
+import static challenge04.main.vidas_historia;
 import static challenge04.main.alma_etapa;
 
 /**
@@ -30,14 +31,31 @@ public class alma extends javax.swing.JFrame {
     };
 
     public alma() {
-        int p = alma_etapa;
-        if (p < 6) {
+        if (alma_etapa < 6 && vidas_historia > 0) {
             initComponents();
             BtnResponder.setVisible(false);
             BtnResponder.setEnabled(false);
 
-            LbTitulo.setText(titulos[p]);
-            TAparrafo.setText(contextos[p]);
+            LbTitulo.setText(titulos[alma_etapa]);
+            TAparrafo.setText(contextos[alma_etapa]);
+            switch (vidas_historia) {
+                case 1 -> {
+                    lbvida1.setVisible(true);
+                    lbvida2.setVisible(false);
+                    lbvida3.setVisible(false);
+                }
+                    case 2 -> {
+                        lbvida1.setVisible(true);
+                        lbvida2.setVisible(true);
+                        lbvida3.setVisible(false);
+                }
+                    case 3 -> {
+                        lbvida1.setVisible(true);
+                        lbvida2.setVisible(true);
+                        lbvida3.setVisible(true);
+                }
+                default -> throw new AssertionError();
+            }
         } else {
             menuHistoria menuH = new menuHistoria();
             dispose();
@@ -62,9 +80,13 @@ public class alma extends javax.swing.JFrame {
         LbContinuar = new javax.swing.JLabel();
         LbTitulo = new javax.swing.JLabel();
         BtnResponder = new javax.swing.JButton();
+        lbvida1 = new javax.swing.JLabel();
+        lbvida2 = new javax.swing.JLabel();
+        lbvida3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Challenge04");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -110,6 +132,15 @@ public class alma extends javax.swing.JFrame {
             }
         });
         pnlStart.add(BtnResponder, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 140, -1));
+
+        lbvida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vida.gif"))); // NOI18N
+        pnlStart.add(lbvida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+
+        lbvida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vida.gif"))); // NOI18N
+        pnlStart.add(lbvida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+
+        lbvida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vida.gif"))); // NOI18N
+        pnlStart.add(lbvida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,6 +271,9 @@ public class alma extends javax.swing.JFrame {
     private javax.swing.JLabel LbTitulo;
     private javax.swing.JTextArea TAparrafo;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lbvida1;
+    private javax.swing.JLabel lbvida2;
+    private javax.swing.JLabel lbvida3;
     private javax.swing.JPanel pnlStart;
     // End of variables declaration//GEN-END:variables
 }

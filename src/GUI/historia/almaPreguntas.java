@@ -5,6 +5,8 @@
 package GUI.historia;
 
 import static challenge04.main.alma_etapa;
+import static challenge04.main.alma_correcta;
+import static challenge04.main.vidas_historia;
 import javax.sound.sampled.*;
 import java.io.InputStream;
 import javax.swing.JOptionPane;
@@ -28,15 +30,34 @@ public class almaPreguntas extends javax.swing.JFrame {
         {"Maíz", "Arroz", "Café", "Frijol"},
         {"Pedir subsidios al gobierno", "Montar un taller local para tostar y empacar el café", "Vender el café a multinacionales", "Cambiar a cultivos de coca"},
         {"Usar transgénicos para aumentar producción", "Crear un banco de semillas de frijol guajiro y venderlo como producto gourmet", "Convertir la tierra en pastizales para ganado", "Esperar lluvias"},
-        {"Repartir más comida procesada ", "Crear una red de pesca sostenible y limpieza de manglares", "Importar carne de res","Construir un puerto pesquero industrial"},
-        {"Dar bonos para comprar en supermercados", "Talleres de cocina con productos de huertos + venta de excedentes", "Repartir suplementos de hierro ","Construir un McDonald`s comunitario"},
-        {"Pedir ayuda a ONGs internacionales", "Crear una cooperativa de mujeres para hacer harina de chontaduro ", "Esperar a que el gobierno construya carreteras","Vender las tierras a empresas"}
+        {"Repartir más comida procesada ", "Crear una red de pesca sostenible y limpieza de manglares", "Importar carne de res", "Construir un puerto pesquero industrial"},
+        {"Dar bonos para comprar en supermercados", "Talleres de cocina con productos de huertos + venta de excedentes", "Repartir suplementos de hierro ", "Construir un McDonald`s comunitario"},
+        {"Pedir ayuda a ONGs internacionales", "Crear una cooperativa de mujeres para hacer harina de chontaduro ", "Esperar a que el gobierno construya carreteras", "Vender las tierras a empresas"}
     };
 
     public almaPreguntas() {
         initComponents();
         reproducirSonido();
         int i = alma_etapa;
+        switch (vidas_historia) {
+                case 1:
+                    lbvida1.setVisible(true);
+                    lbvida2.setVisible(false);
+                    lbvida3.setVisible(false);
+                    break;
+                    case 2:
+                    lbvida1.setVisible(true);
+                    lbvida2.setVisible(true);
+                    lbvida3.setVisible(false);
+                    break;
+                    case 3:
+                    lbvida1.setVisible(true);
+                    lbvida2.setVisible(true);
+                    lbvida3.setVisible(true);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
         LbPregunta.setText(preguntas[i]);
         RB1.setText(opciones[i][0]);
         RB2.setText(opciones[i][1]);
@@ -65,6 +86,9 @@ public class almaPreguntas extends javax.swing.JFrame {
         RB3 = new javax.swing.JRadioButton();
         RB4 = new javax.swing.JRadioButton();
         BtnRespuesta = new javax.swing.JButton();
+        lbvida1 = new javax.swing.JLabel();
+        lbvida2 = new javax.swing.JLabel();
+        lbvida3 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alma_Niña .png"))); // NOI18N
 
@@ -101,14 +125,19 @@ public class almaPreguntas extends javax.swing.JFrame {
             }
         });
 
+        lbvida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vida.gif"))); // NOI18N
+
+        lbvida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vida.gif"))); // NOI18N
+
+        lbvida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vida.gif"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,20 +146,35 @@ public class almaPreguntas extends javax.swing.JFrame {
                             .addComponent(RB3)
                             .addComponent(RB4)
                             .addComponent(LbPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(BtnRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(190, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbvida1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbvida2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbvida3)
+                        .addGap(4, 4, 4))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(340, 340, 340)
                 .addComponent(jLabel2))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(LbPregunta))
-                    .addComponent(jLabel4))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(157, 157, 157)
+                                .addComponent(LbPregunta))
+                            .addComponent(jLabel4)))
+                    .addComponent(lbvida3)
+                    .addComponent(lbvida2)
+                    .addComponent(lbvida1))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -152,13 +196,13 @@ public class almaPreguntas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
 
@@ -166,17 +210,36 @@ public class almaPreguntas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRespuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRespuestaActionPerformed
-        
-        alma_etapa++;
-        LbPregunta.setText("");
-        RB1.setText("");
-        RB2.setText("");
-        RB3.setText("");
-        RB4.setText("");
-        System.out.println("Pasamos a la etapa" + alma_etapa);
-        dispose();
-        alma Alma = new alma();
-        Alma.setVisible(true);
+        int alma_respuesta = 0;
+        if (buttonGroup1.getSelection() != null) {
+
+            if (RB1.isSelected()) {
+                alma_respuesta = 1;
+            } else if (RB2.isSelected()) {
+                alma_respuesta = 2;
+            } else if (RB3.isSelected()) {
+                alma_respuesta = 3;
+            } else if (RB4.isSelected()) {
+                alma_respuesta = 4;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ninguna opción seleccionada");
+            
+        }
+        if (alma_correcta[alma_etapa] == alma_respuesta) {
+            alma_etapa++;
+            LbPregunta.setText("");
+            dispose();
+            alma Alma = new alma();
+            Alma.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error, intente nuevamente");
+            vidas_historia--;
+            dispose();
+            alma Alma = new alma();
+            Alma.setVisible(true);
+        }
+
     }//GEN-LAST:event_BtnRespuestaActionPerformed
     private void reproducirSonido() {
         try {
@@ -247,5 +310,8 @@ public class almaPreguntas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbvida1;
+    private javax.swing.JLabel lbvida2;
+    private javax.swing.JLabel lbvida3;
     // End of variables declaration//GEN-END:variables
 }
