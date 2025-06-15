@@ -74,7 +74,7 @@ public class signup extends javax.swing.JFrame {
         btnBack.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnBack.setBorderPainted(false);
         btnBack.setContentAreaFilled(false);
-        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBack.setDefaultCapable(false);
         btnBack.setFocusPainted(false);
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {

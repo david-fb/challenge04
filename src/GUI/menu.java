@@ -56,8 +56,13 @@ public class menu extends javax.swing.JFrame {
         btn_versus.setBorder(null);
         btn_versus.setBorderPainted(false);
         btn_versus.setContentAreaFilled(false);
-        btn_versus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_versus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_versus.setFocusPainted(false);
+        btn_versus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_versusActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_versus, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 160, 50));
 
         lbl_btn_versus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
@@ -69,7 +74,7 @@ public class menu extends javax.swing.JFrame {
         btn_salir.setBorder(null);
         btn_salir.setBorderPainted(false);
         btn_salir.setContentAreaFilled(false);
-        btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_salir.setFocusPainted(false);
         btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,8 +97,13 @@ public class menu extends javax.swing.JFrame {
         btn_jugador1.setBorder(null);
         btn_jugador1.setBorderPainted(false);
         btn_jugador1.setContentAreaFilled(false);
-        btn_jugador1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_jugador1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_jugador1.setFocusPainted(false);
+        btn_jugador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_jugador1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 160, 50));
 
         lbl_btn_jugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
@@ -105,7 +115,7 @@ public class menu extends javax.swing.JFrame {
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setFocusPainted(false);
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 160, 50));
 
@@ -139,6 +149,16 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    private void btn_jugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jugador1ActionPerformed
+        // TODO add your handling code here:
+        new modojugador(false).setVisible(true);
+    }//GEN-LAST:event_btn_jugador1ActionPerformed
+
+    private void btn_versusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_versusActionPerformed
+        // TODO add your handling code here:
+        new modojugador(true).setVisible(true);
+    }//GEN-LAST:event_btn_versusActionPerformed
 
     /**
      * @param args the command line arguments

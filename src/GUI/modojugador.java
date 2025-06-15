@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -16,19 +17,39 @@ import javax.swing.JTextField;
  *
  * @author HP
  */
-public class Prueba extends javax.swing.JFrame {
+public class modojugador extends javax.swing.JFrame {
 
     /**
      * Creates new form Prueba
      */
     int idpregunta_actual = 0;
     int[] pregunta_jugador1 = new int[5];
-
-    public Prueba() {
+    int puntos = 0;
+    int turno = 0;
+    boolean multiplayer;
+    int puntos_jugador1 = 0;
+    int puntos_jugador2 = 0;
+    
+    public modojugador(boolean multiplayer) {
+        this.multiplayer = multiplayer;
+        System.out.print("Este es el Valor de Multiplayer: "+ multiplayer);
         initComponents();
+        jButton2.setVisible(false);
         preguntas_jugador();
+        
+        if (multiplayer){
+            turno_aleatorio();
+        }
+        
         llenarComponentes(0);
+        jLabel3.setVisible(multiplayer);
+        
 
+    }
+    
+    private void turno_aleatorio (){
+        int numero = (int)(Math.random() * 2) + 1;
+        this.turno = numero;
     }
 
     private void preguntas_jugador() {
@@ -254,9 +275,16 @@ public class Prueba extends javax.swing.JFrame {
 
     private void llenarComponentes(int idpregunta) {
         // Arreglo de textos
+        if (this.multiplayer){
+            jLabel3.setText ("Jugador: "+ this.turno);
+        }
+        
+        jLabel2.setText("");
+        jButton1.setEnabled(true);
+        jButton2.setVisible(false);
         this.idpregunta_actual = idpregunta;
         int pregunta = this.pregunta_jugador1[idpregunta];
-        Object [] datos_preguntas = new Object [4];
+        Object[] datos_preguntas = new Object[4];
 
         if (idpregunta == 0 || idpregunta == 1) {
             datos_preguntas = preguntas_faciles();
@@ -267,7 +295,7 @@ public class Prueba extends javax.swing.JFrame {
         if (idpregunta == 4) {
             datos_preguntas = preguntas_dificil();
         }
-        
+
         String[] preguntas = (String[]) datos_preguntas[0];
         String[][] opciones = (String[][]) datos_preguntas[1];
         String[] correctas = (String[]) datos_preguntas[2];
@@ -279,12 +307,17 @@ public class Prueba extends javax.swing.JFrame {
         // Arreglo de JRadioButton
         JRadioButton[] radioButtons = {jRadioButton1, jRadioButton2, jRadioButton3, jRadioButton4};
 
+        buttonGroup1.clearSelection();
         for (int i = 0; i < radioButtons.length; i++) {
+           
+            if (opciones[pregunta][i].isEmpty()) {
+                radioButtons[i].setVisible(false);
+            } else {
+                radioButtons[i].setVisible(true);
+            }
             radioButtons[i].setText(opciones[pregunta][i]);
         }
 
-        // Marcar el primero por defecto
-        radioButtons[0].setSelected(true);
     }
 
     /**
@@ -306,6 +339,8 @@ public class Prueba extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -321,7 +356,7 @@ public class Prueba extends javax.swing.JFrame {
         buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("jRadioButton1");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("calificar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -332,6 +367,15 @@ public class Prueba extends javax.swing.JFrame {
 
         jLabel2.setText("jLabel2");
 
+        jButton2.setText("Avanzar...");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("jLabel3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -339,27 +383,33 @@ public class Prueba extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jRadioButton4)
-                        .addComponent(jRadioButton3)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jRadioButton2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                            .addComponent(jButton1)
-                            .addGap(66, 66, 66))
-                        .addComponent(jRadioButton1)
-                        .addComponent(jScrollPane1)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton4)
+                    .addComponent(jRadioButton3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(100, 100, 100))
+                    .addComponent(jRadioButton1)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                        .addGap(87, 87, 87)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jRadioButton1)
@@ -375,7 +425,9 @@ public class Prueba extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
 
         pack();
@@ -383,8 +435,111 @@ public class Prueba extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        llenarComponentes(this.idpregunta_actual + 1);
+        validar_respuesta();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (this.idpregunta_actual == 4) {
+            finalizar_juego();
+        } else {
+            llenarComponentes(this.idpregunta_actual + 1);
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void finalizar_juego() {
+        String mensaje = "";
+        if (this.multiplayer){
+            if (this.puntos_jugador1 > this.puntos_jugador2){
+                mensaje = "Ganador Jugador 1";
+            } else if (this.puntos_jugador1 == this.puntos_jugador2){
+                mensaje = "Empate!!";
+            } else {
+                mensaje = "Ganador Jugador 2";
+            }
+            mensaje += "\n Puntos Jugador 1: "+ this.puntos_jugador1;
+            mensaje += "\n Puntos Jugador 2: "+ this.puntos_jugador2;
+        } else {
+            mensaje = "Tu Puntuación fue: " + this.puntos;
+        }
+        JOptionPane.showMessageDialog(
+                this,
+                mensaje,
+                "Resultado Final",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        // Cuando el usuario presiona "Aceptar", continúa aquí:
+        new menu().setVisible(true);
+        dispose(); // Cierra la ventana actual
+    }
+
+    private void validar_respuesta() {
+        String opcion_seleccionar = "";
+        JRadioButton[] radioButtons = {jRadioButton1, jRadioButton2, jRadioButton3, jRadioButton4};
+
+        for (int i = 0; i < radioButtons.length; i++) {
+
+            if (radioButtons[i].isSelected()) {
+                opcion_seleccionar = radioButtons[i].getText();
+            }
+        }
+        if (opcion_seleccionar.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona una Opción",
+                    "Error!",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+
+        }
+        jButton1.setEnabled(false);
+        //this.idpregunta_actual = idpregunta;
+        int pregunta = this.pregunta_jugador1[this.idpregunta_actual];
+        Object[] datos_preguntas = new Object[4];
+        int puntos_posibles = 0;
+
+        if (this.idpregunta_actual == 0 || this.idpregunta_actual == 1) {
+            puntos_posibles = 5;
+            datos_preguntas = preguntas_faciles();
+        }
+        if (this.idpregunta_actual == 2 || this.idpregunta_actual == 3) {
+            puntos_posibles = 10;
+            datos_preguntas = preguntas_medio();
+        }
+        if (this.idpregunta_actual == 4) {
+            puntos_posibles = 15;
+            datos_preguntas = preguntas_dificil();
+        }
+        String[] correctas = (String[]) datos_preguntas[2];
+        String[] retro = (String[]) datos_preguntas[3];
+        jButton2.setVisible(true);
+        String mensaje = "";
+
+        if (opcion_seleccionar.equals(correctas[pregunta])) {
+            this.puntos += puntos_posibles;
+            mensaje = "Correcto!";
+            if (this.multiplayer){
+                if (this.turno==1){
+                    this.puntos_jugador1 += puntos_posibles;
+                } else {
+                    this.puntos_jugador2 += puntos_posibles;
+                }
+            }
+        } else {
+            mensaje = "Incorrecto!";
+            if (this.multiplayer){
+                if (this.turno==1){
+                    this.turno=2;
+                } else {
+                    this.turno=1;
+                }
+            }
+        }
+        jLabel2.setText("<html>" + mensaje + "<br><br>" + retro[pregunta] + "</html>");
+    }
 
     /**
      * @param args the command line arguments
@@ -395,7 +550,7 @@ public class Prueba extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Prueba().setVisible(true);
+                new modojugador(false).setVisible(true);
             }
         });
     }
@@ -403,8 +558,10 @@ public class Prueba extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
