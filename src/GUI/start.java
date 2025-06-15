@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-
+//import java.awt.geom.RoundRectangle2D;
+//import javax.swing.*;
+import java.awt.*;
 /**
  *
  * @author david
@@ -13,8 +15,14 @@ public class start extends javax.swing.JFrame {
     /**
      * Creates new form start
      */
+    private Point initialClick;
+    
     public start() {
         initComponents();
+        //x, y coordenadas
+        //JFrame width height
+        //arc widht and arc height
+//        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
     }
 
     /**
@@ -33,6 +41,7 @@ public class start extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Challenge04");
+        setUndecorated(true);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -40,6 +49,8 @@ public class start extends javax.swing.JFrame {
         });
 
         pnlStart.setBackground(new java.awt.Color(255, 255, 255));
+        pnlStart.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        pnlStart.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlStart.setPreferredSize(new java.awt.Dimension(500, 400));
         pnlStart.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
