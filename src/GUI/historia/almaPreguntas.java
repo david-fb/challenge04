@@ -167,7 +167,7 @@ public class almaPreguntas extends javax.swing.JFrame {
 
     private void BtnRespuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRespuestaActionPerformed
         
-        alma_etapa = alma_etapa + 1;
+        alma_etapa++;
         LbPregunta.setText("");
         RB1.setText("");
         RB2.setText("");

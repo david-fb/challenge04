@@ -11,32 +11,40 @@ import static challenge04.main.alma_etapa;
  * @author david
  */
 public class alma extends javax.swing.JFrame {
+
     String[] titulos = {
-    "ALMA",
-    "Importancia del cafe",
-    "Expedicion de alma",
-    "Alma en Riohacha",
-    "Alma en Cartagena",
-    "Pasantia en Quibdo"
-};    
+        "ALMA",
+        "Importancia del cafe",
+        "Expedicion de alma",
+        "Alma en Riohacha",
+        "Alma en Cartagena",
+        "Pasantia en Quibdo"
+    };
     String[] contextos = {
-    "Alma nace del sentimiento y necesidad de muchos de los niños de Uribia que pasan hambre diariamente, por eso Alma nace con el fin de combatir las necesidades básicas insatisfechas. La inseguridad alimentaria y desnutrición mediante acciones y compartiendo conocimiento que desarrollara en su aventura, Alma debe adquirir conocimiento, ayúdala a pasar su educación en la escuela Alfonso López Pumarejoro pero debe conocer sobre sus tierras de origen. Alma requiere aprender primero bases e información importante para combatir el hambre, pero como todo niño debe empezar por la calle.",
-    "La producción de café en Urumita es fundamental para la economía local, ya que más del 2.83% de la producción nacional proviene de esta región. Urumita, conocida como El Jardín del Sur de La Guajira",
-    "Alma en una de las expediciones de la escuela viaja al municipio vecino de Distracción ve cultivos de frijol guajiro secos por el clima.",
-    "Alma ha crecido en su manera de pensar y visualizar su entorno por lo cual sigue su educación en Riohacha.",
-    "En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia. Una nutricionista le explica: En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia. Una nutricionista le explica:",
-    "Alma aprendió mucho. Finalmente deciden hacer una pasantía en el Quibdo en el Barrio el reposo"
-};
+        "Alma nace del sentimiento y necesidad de muchos de los niños de Uribia que pasan hambre diariamente, por eso Alma nace con el fin de combatir las necesidades básicas insatisfechas. La inseguridad alimentaria y desnutrición mediante acciones y compartiendo conocimiento que desarrollara en su aventura, Alma debe adquirir conocimiento, ayúdala a pasar su educación en la escuela Alfonso López Pumarejoro pero debe conocer sobre sus tierras de origen. Alma requiere aprender primero bases e información importante para combatir el hambre, pero como todo niño debe empezar por la calle.",
+        "La producción de café en Urumita es fundamental para la economía local, ya que más del 2.83% de la producción nacional proviene de esta región. Urumita, conocida como El Jardín del Sur de La Guajira",
+        "Alma en una de las expediciones de la escuela viaja al municipio vecino de Distracción ve cultivos de frijol guajiro secos por el clima.",
+        "Alma ha crecido en su manera de pensar y visualizar su entorno por lo cual sigue su educación en Riohacha.",
+        "En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia. Una nutricionista le explica: En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia. Una nutricionista le explica:",
+        "Alma aprendió mucho. Finalmente deciden hacer una pasantía en el Quibdo en el Barrio el reposo"
+    };
+
     public alma() {
-        initComponents();
-        BtnResponder.setVisible(false);
-        BtnResponder.setEnabled(false);
         int p = alma_etapa;
-        LbTitulo.setText(titulos[p]);
-        TAparrafo.setText(contextos[p]);
-        
-        
-        
+        if (p < 6) {
+            initComponents();
+            BtnResponder.setVisible(false);
+            BtnResponder.setEnabled(false);
+
+            LbTitulo.setText(titulos[p]);
+            TAparrafo.setText(contextos[p]);
+        } else {
+            menuHistoria menuH = new menuHistoria();
+            dispose();
+
+            menuH.setVisible(true);
+        }
+
     }
 
     /**
@@ -121,10 +129,10 @@ public class alma extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    private void mostrarBoton(){
+    private void mostrarBoton() {
         BtnResponder.setVisible(true);
-            BtnResponder.setEnabled(true);
-            LbContinuar.setVisible(false);
+        BtnResponder.setEnabled(true);
+        LbContinuar.setVisible(false);
     }
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
@@ -164,24 +172,18 @@ public class alma extends javax.swing.JFrame {
             LbTitulo.setText("CARTAGENA");
             TAparrafo.setText("""
                               En categena de Indias, Hay huertos urbanos, pero las personas no saben cocinar lo que cosechan. """);
-                                }
+        }
         if (alma_etapa == 5) {
             mostrarBoton();
-            LbTitulo.setText("¿Por qué se crearon los ODS?");
+            LbTitulo.setText("EMPODERAMIENTO");
             TAparrafo.setText("""
                               Alma conoce a mujeres afro que cultivan chontaduro, pero no pueden venderlo. Una líder le cuenta:
                               Los mercados están lejos y el transporte es caro y los hombres controlan los ingresos familiares.""");
         }
-        if (alma_etapa == 6) {
 
-            /*
-             */
-            menuHistoria menuH = new menuHistoria();
-            dispose();
 
-            menuH.setVisible(true);
-        }
-
+        /*
+         */
 
     }//GEN-LAST:event_formKeyPressed
 
