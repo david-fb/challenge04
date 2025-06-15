@@ -6,6 +6,7 @@ package GUI;
 
 import GUI.historia.menuHistoria;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -13,11 +14,14 @@ import java.awt.Color;
  */
 public class menu extends javax.swing.JFrame {
 
+    ImageIcon hoverBtnIcon, defaultBtnIcon;
     /**
      * Creates new form menu
      */
     public menu() {
         initComponents();
+        hoverBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-active.png"));
+        defaultBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn.png"));
     }
 
     /**
@@ -34,11 +38,11 @@ public class menu extends javax.swing.JFrame {
         btn_versus = new javax.swing.JButton();
         lbl_btn_versus = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
-        img_btn_salir = new javax.swing.JLabel();
+        lbl_btn_salir = new javax.swing.JLabel();
         btn_jugador1 = new javax.swing.JButton();
         lbl_btn_jugador1 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        btn_historia = new javax.swing.JButton();
+        lbl_btn_historia = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,7 +57,7 @@ public class menu extends javax.swing.JFrame {
         lbl_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         jPanel1.add(lbl_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        btn_versus.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        btn_versus.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btn_versus.setForeground(new java.awt.Color(255, 255, 255));
         btn_versus.setText("Versus");
         btn_versus.setBorder(null);
@@ -61,17 +65,25 @@ public class menu extends javax.swing.JFrame {
         btn_versus.setContentAreaFilled(false);
         btn_versus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_versus.setFocusPainted(false);
+        btn_versus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_versusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_versusMouseExited(evt);
+            }
+        });
         btn_versus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_versusActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_versus, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 160, 50));
+        jPanel1.add(btn_versus, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 180, 40));
 
         lbl_btn_versus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
         jPanel1.add(lbl_btn_versus, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 200, 70));
 
-        btn_salir.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        btn_salir.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btn_salir.setForeground(new java.awt.Color(255, 255, 255));
         btn_salir.setText("Salir");
         btn_salir.setBorder(null);
@@ -79,6 +91,14 @@ public class menu extends javax.swing.JFrame {
         btn_salir.setContentAreaFilled(false);
         btn_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_salir.setFocusPainted(false);
+        btn_salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_salirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_salirMouseExited(evt);
+            }
+        });
         btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_salirActionPerformed(evt);
@@ -89,12 +109,12 @@ public class menu extends javax.swing.JFrame {
                 btn_salirKeyPressed(evt);
             }
         });
-        jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 160, 50));
+        jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 180, 40));
 
-        img_btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
-        jPanel1.add(img_btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 200, 70));
+        lbl_btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 200, 70));
 
-        btn_jugador1.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        btn_jugador1.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btn_jugador1.setForeground(new java.awt.Color(255, 255, 255));
         btn_jugador1.setText("Jugador 1");
         btn_jugador1.setBorder(null);
@@ -102,33 +122,49 @@ public class menu extends javax.swing.JFrame {
         btn_jugador1.setContentAreaFilled(false);
         btn_jugador1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_jugador1.setFocusPainted(false);
+        btn_jugador1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_jugador1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_jugador1MouseExited(evt);
+            }
+        });
         btn_jugador1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_jugador1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 160, 50));
+        jPanel1.add(btn_jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 180, 40));
 
         lbl_btn_jugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
         jPanel1.add(lbl_btn_jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 200, 70));
 
-        jButton7.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Modo Historia");
-        jButton7.setBorder(null);
-        jButton7.setBorderPainted(false);
-        jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.setFocusPainted(false);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+        btn_historia.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        btn_historia.setForeground(new java.awt.Color(255, 255, 255));
+        btn_historia.setText("Modo Historia");
+        btn_historia.setBorder(null);
+        btn_historia.setBorderPainted(false);
+        btn_historia.setContentAreaFilled(false);
+        btn_historia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_historia.setFocusPainted(false);
+        btn_historia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_historiaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_historiaMouseExited(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 160, 50));
+        btn_historia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_historiaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_historia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 180, 40));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 70));
+        lbl_btn_historia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_historia, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 70));
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background.png"))); // NOI18N
         jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
@@ -172,11 +208,51 @@ public class menu extends javax.swing.JFrame {
         modoJugador.setVisible(true);
     }//GEN-LAST:event_btn_versusActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btn_historiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_historiaActionPerformed
         menuHistoria menuH = new menuHistoria();
         menuH.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btn_historiaActionPerformed
+
+    private void btn_historiaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_historiaMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_historia.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_btn_historiaMouseEntered
+
+    private void btn_historiaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_historiaMouseExited
+        // TODO add your handling code here:
+        lbl_btn_historia.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_btn_historiaMouseExited
+
+    private void btn_jugador1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_jugador1MouseEntered
+        // TODO add your handling code here:
+        lbl_btn_jugador1.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_btn_jugador1MouseEntered
+
+    private void btn_jugador1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_jugador1MouseExited
+        // TODO add your handling code here:
+        lbl_btn_jugador1.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_btn_jugador1MouseExited
+
+    private void btn_versusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_versusMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_versus.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_btn_versusMouseEntered
+
+    private void btn_versusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_versusMouseExited
+        // TODO add your handling code here:
+        lbl_btn_versus.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_btn_versusMouseExited
+
+    private void btn_salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_salirMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_salir.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_btn_salirMouseEntered
+
+    private void btn_salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_salirMouseExited
+        // TODO add your handling code here:
+        lbl_btn_salir.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_btn_salirMouseExited
 
     /**
      * @param args the command line arguments
@@ -214,15 +290,15 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_historia;
     private javax.swing.JButton btn_jugador1;
     private javax.swing.JButton btn_salir;
     private javax.swing.JButton btn_versus;
-    private javax.swing.JLabel img_btn_salir;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lbl_btn_historia;
     private javax.swing.JLabel lbl_btn_jugador1;
+    private javax.swing.JLabel lbl_btn_salir;
     private javax.swing.JLabel lbl_btn_versus;
     private javax.swing.JLabel lbl_icon;
     // End of variables declaration//GEN-END:variables

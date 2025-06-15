@@ -85,9 +85,6 @@ public class login extends javax.swing.JFrame {
         BtnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnLogin.setFocusPainted(false);
         BtnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnLoginMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BtnLoginMouseEntered(evt);
             }
@@ -162,11 +159,6 @@ public class login extends javax.swing.JFrame {
         dispose();
         Signup.setVisible(true);
     }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void BtnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnLoginMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_BtnLoginMouseClicked
 
     private void BtnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnLoginMouseEntered
         // TODO add your handling code here:

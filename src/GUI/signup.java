@@ -5,6 +5,7 @@
 package GUI;
 import GUI.message.customMessage;
 import static challenge04.main.*;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,11 +14,14 @@ import javax.swing.JOptionPane;
  */
 public class signup extends javax.swing.JFrame {
 
+    ImageIcon hoverBtnIcon, defaultBtnIcon;
     /**
-     * Creates new form signup
+     * Creates new form sign up
      */
     public signup() {
         initComponents();
+        hoverBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-active.png"));
+        defaultBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn.png"));
     }
 
     /**
@@ -75,7 +79,7 @@ public class signup extends javax.swing.JFrame {
         btnBack.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnBack.setBorderPainted(false);
         btnBack.setContentAreaFilled(false);
-        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.setDefaultCapable(false);
         btnBack.setFocusPainted(false);
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,6 +96,14 @@ public class signup extends javax.swing.JFrame {
         BtnRegistrar.setBorderPainted(false);
         BtnRegistrar.setContentAreaFilled(false);
         BtnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BtnRegistrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnRegistrarMouseExited(evt);
+            }
+        });
         BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRegistrarActionPerformed(evt);
@@ -151,6 +163,16 @@ public class signup extends javax.swing.JFrame {
         dispose();
         Login.setVisible(true);
     }//GEN-LAST:event_btnBackMouseClicked
+
+    private void BtnRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_registrar.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_BtnRegistrarMouseEntered
+
+    private void BtnRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarMouseExited
+        // TODO add your handling code here:
+        lbl_btn_registrar.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_BtnRegistrarMouseExited
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@
 package GUI.historia;
 
 import GUI.*;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -12,11 +13,14 @@ import GUI.*;
  */
 public class menuHistoria extends javax.swing.JFrame {
 
+    ImageIcon hoverBtnIcon, defaultBtnIcon;
     /**
      * Creates new form menu
      */
     public menuHistoria() {
         initComponents();
+        hoverBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-active.png"));
+        defaultBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn.png"));
     }
 
     /**
@@ -36,7 +40,7 @@ public class menuHistoria extends javax.swing.JFrame {
         BtnEDu = new javax.swing.JButton();
         lbl_btn_edu = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
-        lbl_btn_edu1 = new javax.swing.JLabel();
+        lbl_btn_volver = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
 
@@ -59,6 +63,14 @@ public class menuHistoria extends javax.swing.JFrame {
         BtnLimbo.setContentAreaFilled(false);
         BtnLimbo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnLimbo.setFocusPainted(false);
+        BtnLimbo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BtnLimboMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnLimboMouseExited(evt);
+            }
+        });
         BtnLimbo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnLimboActionPerformed(evt);
@@ -77,6 +89,14 @@ public class menuHistoria extends javax.swing.JFrame {
         BtnAlma.setContentAreaFilled(false);
         BtnAlma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnAlma.setFocusPainted(false);
+        BtnAlma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BtnAlmaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnAlmaMouseExited(evt);
+            }
+        });
         BtnAlma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAlmaActionPerformed(evt);
@@ -94,6 +114,14 @@ public class menuHistoria extends javax.swing.JFrame {
         BtnEDu.setBorderPainted(false);
         BtnEDu.setContentAreaFilled(false);
         BtnEDu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnEDu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BtnEDuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnEDuMouseExited(evt);
+            }
+        });
         BtnEDu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEDuActionPerformed(evt);
@@ -112,6 +140,14 @@ public class menuHistoria extends javax.swing.JFrame {
         btn_volver.setContentAreaFilled(false);
         btn_volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_volver.setFocusPainted(false);
+        btn_volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_volverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_volverMouseExited(evt);
+            }
+        });
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_volverActionPerformed(evt);
@@ -119,8 +155,8 @@ public class menuHistoria extends javax.swing.JFrame {
         });
         jPanel1.add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 170, 40));
 
-        lbl_btn_edu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
-        jPanel1.add(lbl_btn_edu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 190, 60));
+        lbl_btn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 190, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
@@ -167,6 +203,46 @@ public class menuHistoria extends javax.swing.JFrame {
         dispose();
         Edu.setVisible(true);
     }//GEN-LAST:event_BtnEDuActionPerformed
+
+    private void BtnLimboMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnLimboMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_limbo.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_BtnLimboMouseEntered
+
+    private void BtnLimboMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnLimboMouseExited
+        // TODO add your handling code here:
+        lbl_btn_limbo.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_BtnLimboMouseExited
+
+    private void BtnAlmaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAlmaMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_alma.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_BtnAlmaMouseEntered
+
+    private void BtnAlmaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAlmaMouseExited
+        // TODO add your handling code here:
+        lbl_btn_alma.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_BtnAlmaMouseExited
+
+    private void BtnEDuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEDuMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_edu.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_BtnEDuMouseEntered
+
+    private void BtnEDuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEDuMouseExited
+        // TODO add your handling code here:
+        lbl_btn_edu.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_BtnEDuMouseExited
+
+    private void btn_volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_volverMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_volver.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_btn_volverMouseEntered
+
+    private void btn_volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_volverMouseExited
+        // TODO add your handling code here:
+        lbl_btn_volver.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_btn_volverMouseExited
 
     /**
      * @param args the command line arguments
@@ -216,7 +292,7 @@ public class menuHistoria extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_btn_alma;
     private javax.swing.JLabel lbl_btn_edu;
-    private javax.swing.JLabel lbl_btn_edu1;
     private javax.swing.JLabel lbl_btn_limbo;
+    private javax.swing.JLabel lbl_btn_volver;
     // End of variables declaration//GEN-END:variables
 }
