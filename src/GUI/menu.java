@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import GUI.historia.menuHistoria;
+
 /**
  *
  * @author david
@@ -117,6 +119,11 @@ public class menu extends javax.swing.JFrame {
         jButton7.setContentAreaFilled(false);
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setFocusPainted(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 160, 50));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
@@ -159,6 +166,12 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         new modojugador(true).setVisible(true);
     }//GEN-LAST:event_btn_versusActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+     menuHistoria menuH = new menuHistoria();
+     menuH.setVisible(true);
+     dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

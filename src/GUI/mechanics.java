@@ -35,6 +35,7 @@ public class mechanics extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Challenge04 - Mecánicas");
         setBackground(new java.awt.Color(255, 255, 255));
+        setUndecorated(true);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);

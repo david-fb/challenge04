@@ -14,9 +14,11 @@ public class main {
 
     public static String[] nombres = new String[10];
     public static String[] contrasenas = new String[10];
-    
+    public static int alma_etapa;
+    public static int[] alma_correcta = {3,2,2,2,2,2};
+    public static int vidas_historia=3;
     static int tUsuario = 0;
-
+    
     public static void main(String args[]) {
          
         start Start = new start();
