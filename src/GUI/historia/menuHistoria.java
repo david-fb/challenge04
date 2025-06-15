@@ -30,61 +30,108 @@ public class menuHistoria extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         BtnLimbo = new javax.swing.JButton();
+        lbl_btn_limbo = new javax.swing.JLabel();
         BtnAlma = new javax.swing.JButton();
+        lbl_btn_alma = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        lbl_btn_edu = new javax.swing.JLabel();
+        btn_volver = new javax.swing.JButton();
+        lbl_btn_edu1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lbl_background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Challenge04 - Menú Principal");
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        BtnLimbo.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        BtnLimbo.setForeground(new java.awt.Color(255, 255, 255));
         BtnLimbo.setText("Limbo");
+        BtnLimbo.setBorder(null);
+        BtnLimbo.setBorderPainted(false);
+        BtnLimbo.setContentAreaFilled(false);
+        BtnLimbo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnLimbo.setFocusPainted(false);
         BtnLimbo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnLimboActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnLimbo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 285, 30));
+        jPanel1.add(BtnLimbo, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 190, 160, 40));
 
+        lbl_btn_limbo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_limbo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 190, 60));
+
+        BtnAlma.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        BtnAlma.setForeground(new java.awt.Color(255, 255, 255));
         BtnAlma.setText("Alma (ODS) (bloqueado)");
+        BtnAlma.setBorder(null);
+        BtnAlma.setBorderPainted(false);
+        BtnAlma.setContentAreaFilled(false);
+        BtnAlma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnAlma.setFocusPainted(false);
         BtnAlma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAlmaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnAlma, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 285, 30));
+        jPanel1.add(BtnAlma, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 260, 170, 40));
 
+        lbl_btn_alma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_alma, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 190, 60));
+
+        jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Edu (ODS 4) (bloqueado)");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 285, 30));
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 330, 170, 40));
 
-        jButton4.setText("Volver");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        lbl_btn_edu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_edu, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 190, 60));
+
+        btn_volver.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn_volver.setForeground(new java.awt.Color(255, 255, 255));
+        btn_volver.setText("Volver");
+        btn_volver.setBorder(null);
+        btn_volver.setBorderPainted(false);
+        btn_volver.setContentAreaFilled(false);
+        btn_volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_volver.setFocusPainted(false);
+        btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btn_volverActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 285, 30));
+        jPanel1.add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 170, 40));
+
+        lbl_btn_edu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_edu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 190, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+
+        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-historia.png"))); // NOI18N
+        jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -97,15 +144,15 @@ public class menuHistoria extends javax.swing.JFrame {
      Limbo.setVisible(true);
     }//GEN-LAST:event_BtnLimboActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
         // TODO add your handling code here:
-        login Login = new login();
+        menu Menu = new menu();
         dispose();
-        Login.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        Menu.setVisible(true);
+    }//GEN-LAST:event_btn_volverActionPerformed
 
     private void BtnAlmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlmaActionPerformed
-       alma Alma = new alma();
+        alma Alma = new alma();
         dispose();
         Alma.setVisible(true);
     }//GEN-LAST:event_BtnAlmaActionPerformed
@@ -151,9 +198,14 @@ public class menuHistoria extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAlma;
     private javax.swing.JButton BtnLimbo;
+    private javax.swing.JButton btn_volver;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_background;
+    private javax.swing.JLabel lbl_btn_alma;
+    private javax.swing.JLabel lbl_btn_edu;
+    private javax.swing.JLabel lbl_btn_edu1;
+    private javax.swing.JLabel lbl_btn_limbo;
     // End of variables declaration//GEN-END:variables
 }

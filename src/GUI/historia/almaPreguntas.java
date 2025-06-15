@@ -4,6 +4,7 @@
  */
 package GUI.historia;
 
+import GUI.message.customMessage;
 import static challenge04.main.alma_etapa;
 import static challenge04.main.alma_correcta;
 import static challenge04.main.vidas_historia;
@@ -37,27 +38,29 @@ public class almaPreguntas extends javax.swing.JFrame {
 
     public almaPreguntas() {
         initComponents();
-        reproducirSonido();
+        //reproducirSonido();
         int i = alma_etapa;
         switch (vidas_historia) {
-                case 1:
-                    lbvida1.setVisible(true);
-                    lbvida2.setVisible(false);
-                    lbvida3.setVisible(false);
-                    break;
-                    case 2:
-                    lbvida1.setVisible(true);
-                    lbvida2.setVisible(true);
-                    lbvida3.setVisible(false);
-                    break;
-                    case 3:
-                    lbvida1.setVisible(true);
-                    lbvida2.setVisible(true);
-                    lbvida3.setVisible(true);
-                    break;
-                default:
-                    throw new AssertionError();
-            }
+            case 1:
+                lbvida1.setVisible(true);
+                lbvida2.setVisible(false);
+                lbvida3.setVisible(false);
+                break;
+            case 2:
+                lbvida1.setVisible(true);
+                lbvida2.setVisible(true);
+                lbvida3.setVisible(false);
+                break;
+            case 3:
+                lbvida1.setVisible(true);
+                lbvida2.setVisible(true);
+                lbvida3.setVisible(true);
+                break;
+            default:
+                lbvida1.setVisible(false);
+                lbvida2.setVisible(false);
+                lbvida3.setVisible(false);
+        }
         LbPregunta.setText(preguntas[i]);
         RB1.setText(opciones[i][0]);
         RB2.setText(opciones[i][1]);
@@ -80,131 +83,115 @@ public class almaPreguntas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        LbPregunta = new javax.swing.JLabel();
+        LbPregunta = new javax.swing.JTextArea();
         RB1 = new javax.swing.JRadioButton();
         RB2 = new javax.swing.JRadioButton();
         RB3 = new javax.swing.JRadioButton();
         RB4 = new javax.swing.JRadioButton();
         BtnRespuesta = new javax.swing.JButton();
+        lbl_btn_respuesta = new javax.swing.JLabel();
         lbvida1 = new javax.swing.JLabel();
         lbvida2 = new javax.swing.JLabel();
         lbvida3 = new javax.swing.JLabel();
+        lbl_background = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alma_Niña .png"))); // NOI18N
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CHALLENGE 04");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(700, 500));
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 400));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alma_Niña .png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 110, 190));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 6, -1, -1));
 
+        LbPregunta.setEditable(false);
+        LbPregunta.setColumns(20);
+        LbPregunta.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         LbPregunta.setForeground(new java.awt.Color(255, 153, 0));
-        LbPregunta.setText("\"\"");
-        LbPregunta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        LbPregunta.setLineWrap(true);
+        LbPregunta.setRows(5);
+        LbPregunta.setWrapStyleWord(true);
+        LbPregunta.setBorder(null);
+        LbPregunta.setFocusable(false);
+        LbPregunta.setOpaque(false);
+        jPanel1.add(LbPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 630, 70));
 
         buttonGroup1.add(RB1);
+        RB1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RB1.setForeground(new java.awt.Color(255, 255, 255));
+        RB1.setContentAreaFilled(false);
+        jPanel1.add(RB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
         buttonGroup1.add(RB2);
+        RB2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RB2.setForeground(new java.awt.Color(255, 255, 255));
+        RB2.setContentAreaFilled(false);
+        jPanel1.add(RB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
         buttonGroup1.add(RB3);
+        RB3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RB3.setForeground(new java.awt.Color(255, 255, 255));
+        RB3.setContentAreaFilled(false);
+        jPanel1.add(RB3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
         buttonGroup1.add(RB4);
+        RB4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RB4.setForeground(new java.awt.Color(255, 255, 255));
+        RB4.setContentAreaFilled(false);
+        jPanel1.add(RB4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
-        BtnRespuesta.setForeground(new java.awt.Color(255, 153, 0));
+        BtnRespuesta.setFont(new java.awt.Font("Segoe UI Black", 1, 17)); // NOI18N
+        BtnRespuesta.setForeground(new java.awt.Color(255, 255, 255));
         BtnRespuesta.setText("Enviar  Respuesta");
+        BtnRespuesta.setBorder(null);
+        BtnRespuesta.setBorderPainted(false);
+        BtnRespuesta.setContentAreaFilled(false);
+        BtnRespuesta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnRespuesta.setFocusPainted(false);
         BtnRespuesta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRespuestaActionPerformed(evt);
             }
         });
+        jPanel1.add(BtnRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 160, 50));
+
+        lbl_btn_respuesta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 200, 60));
 
         lbvida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vida.gif"))); // NOI18N
+        jPanel1.add(lbvida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, -1, -1));
 
         lbvida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vida.gif"))); // NOI18N
+        jPanel1.add(lbvida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, -1, -1));
 
         lbvida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vida.gif"))); // NOI18N
+        jPanel1.add(lbvida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RB1)
-                            .addComponent(RB2)
-                            .addComponent(RB3)
-                            .addComponent(RB4)
-                            .addComponent(LbPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(190, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbvida1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbvida2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbvida3)
-                        .addGap(4, 4, 4))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(340, 340, 340)
-                .addComponent(jLabel2))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(157, 157, 157)
-                                .addComponent(LbPregunta))
-                            .addComponent(jLabel4)))
-                    .addComponent(lbvida3)
-                    .addComponent(lbvida2)
-                    .addComponent(lbvida1))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(RB1)
-                        .addGap(9, 9, 9)
-                        .addComponent(RB2)
-                        .addGap(9, 9, 9)
-                        .addComponent(RB3)
-                        .addGap(9, 9, 9)
-                        .addComponent(RB4)
-                        .addGap(29, 29, 29)
-                        .addComponent(BtnRespuesta))
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18))
-        );
+        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_general.png"))); // NOI18N
+        jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -224,23 +211,45 @@ public class almaPreguntas extends javax.swing.JFrame {
             } else if (RB4.isSelected()) {
                 alma_respuesta = 4;
             }
+
+            if (alma_correcta[alma_etapa] == alma_respuesta) {
+                alma_etapa++;
+                LbPregunta.setText("");
+                dispose();
+                if (alma_etapa < 6 && vidas_historia > 0) {
+                    alma Alma = new alma();
+                    Alma.setVisible(true);
+                } else {
+                    menuHistoria menuH = new menuHistoria();
+                    dispose();
+
+                    menuH.setVisible(true);
+                }
+                
+            } else {
+                //JOptionPane.showMessageDialog(this, "Error, intente nuevamente");
+                customMessage dialog = new customMessage(this, true, "Incorrecto, vamos de nuevo");
+                dialog.setVisible(true);
+                vidas_historia--;
+                dispose();
+                if (alma_etapa < 6 && vidas_historia > 0) {
+                    alma Alma = new alma();
+                    Alma.setVisible(true);
+                } else {
+                    menuHistoria menuH = new menuHistoria();
+                    dispose();
+                    vidas_historia = 3;
+                    alma_etapa = 0;
+                    menuH.setVisible(true);
+                }
+            }
+
         } else {
-            JOptionPane.showMessageDialog(null, "Ninguna opción seleccionada");
-            
+            //JOptionPane.showMessageDialog(null, "Ninguna opción seleccionada");
+            customMessage dialog = new customMessage(this, true, "Ninguna opción seleccionada");
+            dialog.setVisible(true);
         }
-        if (alma_correcta[alma_etapa] == alma_respuesta) {
-            alma_etapa++;
-            LbPregunta.setText("");
-            dispose();
-            alma Alma = new alma();
-            Alma.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Error, intente nuevamente");
-            vidas_historia--;
-            dispose();
-            alma Alma = new alma();
-            Alma.setVisible(true);
-        }
+
 
     }//GEN-LAST:event_BtnRespuestaActionPerformed
     private void reproducirSonido() {
@@ -301,7 +310,7 @@ public class almaPreguntas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRespuesta;
-    private javax.swing.JLabel LbPregunta;
+    private javax.swing.JTextArea LbPregunta;
     private javax.swing.JRadioButton RB1;
     private javax.swing.JRadioButton RB2;
     private javax.swing.JRadioButton RB3;
@@ -312,6 +321,8 @@ public class almaPreguntas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_background;
+    private javax.swing.JLabel lbl_btn_respuesta;
     private javax.swing.JLabel lbvida1;
     private javax.swing.JLabel lbvida2;
     private javax.swing.JLabel lbvida3;
