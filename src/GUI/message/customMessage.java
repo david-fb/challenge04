@@ -5,6 +5,7 @@
 package GUI.message;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.awt.Color;
  */
 public class customMessage extends javax.swing.JDialog {
 
-    public enum AlertType { SUCCESS, ERROR }
+    ImageIcon hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnOkIcon, defaultBtnOKIcon;
     
     /**
      * Creates new form customMessage
@@ -48,6 +49,15 @@ public class customMessage extends javax.swing.JDialog {
         
         pnl_principal.setBackground(new Color(0, 0, 0, 0));
         txt_message.setText(message);
+        
+        hoverBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close-active.png"));
+        defaultBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"));
+        
+        hoverBtnOkIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-ok-active.png"));
+        defaultBtnOKIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-ok.png"));
+        
+        lbl_cerrar.setIcon(defaultBtnCloseIcon);
+        lbl_btn_ok.setIcon(defaultBtnOKIcon);
     }
 
     /**
@@ -61,9 +71,10 @@ public class customMessage extends javax.swing.JDialog {
 
         pnl_principal = new javax.swing.JPanel();
         btn_ok = new javax.swing.JButton();
+        lbl_btn_ok = new javax.swing.JLabel();
         lbl_cerrar = new javax.swing.JLabel();
         txt_message = new javax.swing.JTextPane();
-        lbl_background = new javax.swing.JLabel();
+        lbl_content = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -79,34 +90,45 @@ public class customMessage extends javax.swing.JDialog {
         btn_ok.setContentAreaFilled(false);
         btn_ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_ok.setFocusPainted(false);
+        btn_ok.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_okMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_okMouseExited(evt);
+            }
+        });
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_okActionPerformed(evt);
             }
         });
-        pnl_principal.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 127, 240, 70));
+        pnl_principal.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 127, 220, 60));
+        pnl_principal.add(lbl_btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 220, 80));
 
         lbl_cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_cerrarMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_cerrarMouseEntered(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lbl_cerrarMouseExited(evt);
             }
         });
-        pnl_principal.add(lbl_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 60, 60));
+        pnl_principal.add(lbl_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 50, 50));
 
         txt_message.setEditable(false);
         txt_message.setBorder(null);
         txt_message.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         txt_message.setFocusable(false);
         txt_message.setOpaque(false);
-        pnl_principal.add(txt_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 320, 70));
+        pnl_principal.add(txt_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 320, 70));
 
-        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message-background.png"))); // NOI18N
-        lbl_background.setText("jLabel4");
-        pnl_principal.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, 460, -1));
+        lbl_content.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/content-message.png"))); // NOI18N
+        pnl_principal.add(lbl_content, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 450, 200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,12 +152,28 @@ public class customMessage extends javax.swing.JDialog {
 
     private void lbl_cerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_cerrarMouseExited
         // TODO add your handling code here:
+        lbl_cerrar.setIcon(defaultBtnCloseIcon);
     }//GEN-LAST:event_lbl_cerrarMouseExited
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btn_okActionPerformed
+
+    private void btn_okMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_okMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_ok.setIcon(hoverBtnOkIcon);
+    }//GEN-LAST:event_btn_okMouseEntered
+
+    private void btn_okMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_okMouseExited
+        // TODO add your handling code here:
+        lbl_btn_ok.setIcon(defaultBtnOKIcon);
+    }//GEN-LAST:event_btn_okMouseExited
+
+    private void lbl_cerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_cerrarMouseEntered
+        // TODO add your handling code here:
+        lbl_cerrar.setIcon(hoverBtnCloseIcon);
+    }//GEN-LAST:event_lbl_cerrarMouseEntered
 
     /**
      * @param args the command line arguments
@@ -181,8 +219,9 @@ public class customMessage extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_ok;
-    private javax.swing.JLabel lbl_background;
+    private javax.swing.JLabel lbl_btn_ok;
     private javax.swing.JLabel lbl_cerrar;
+    private javax.swing.JLabel lbl_content;
     private javax.swing.JPanel pnl_principal;
     private javax.swing.JTextPane txt_message;
     // End of variables declaration//GEN-END:variables
