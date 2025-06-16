@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 public class signup extends javax.swing.JFrame {
 
     private Point mouseClickPoint;
-    ImageIcon hoverBtnIcon, defaultBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
+    ImageIcon hoverBtnIcon, defaultBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon, inputImg, inputActiveImg;
     sound Sound = new sound();
     
     /**
@@ -32,6 +32,11 @@ public class signup extends javax.swing.JFrame {
         
         hoverBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini-active.png"));
         defaultBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"));
+        
+        inputImg = new ImageIcon(getClass().getResource("/imagenes/input-img.png"));
+        inputActiveImg = new ImageIcon(getClass().getResource("/imagenes/input-img-active.png"));
+        txtUsuario.setOpaque(false);
+        txtContrasena.setOpaque(false);
     }
 
     /**
@@ -52,7 +57,9 @@ public class signup extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
+        lbl_input_user = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
+        lbl_input_pass = new javax.swing.JLabel();
         BtnRegistrar = new javax.swing.JButton();
         lbl_btn_registrar = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
@@ -137,14 +144,46 @@ public class signup extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 200, -1));
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 200, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
+
+        txtUsuario.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(0, 0, 51));
+        txtUsuario.setBorder(null);
+        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 180, 40));
+
+        lbl_input_user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/input-img.png"))); // NOI18N
+        lbl_input_user.setText("jLabel5");
+        jPanel1.add(lbl_input_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 220, 60));
+
+        txtContrasena.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        txtContrasena.setForeground(new java.awt.Color(0, 0, 51));
+        txtContrasena.setBorder(null);
+        txtContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContrasenaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtContrasenaFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 180, 40));
+
+        lbl_input_pass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/input-img.png"))); // NOI18N
+        lbl_input_pass.setText("jLabel5");
+        jPanel1.add(lbl_input_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 220, 60));
 
         BtnRegistrar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         BtnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,10 +205,10 @@ public class signup extends javax.swing.JFrame {
                 BtnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 180, 40));
+        jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 180, 40));
 
         lbl_btn_registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
-        jPanel1.add(lbl_btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 190, -1));
+        jPanel1.add(lbl_btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 190, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-2.png"))); // NOI18N
         jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
@@ -276,6 +315,26 @@ public class signup extends javax.swing.JFrame {
         mouseClickPoint = evt.getPoint();
     }//GEN-LAST:event_pnl_barMousePressed
 
+    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
+        // TODO add your handling code here:
+        lbl_input_user.setIcon(inputActiveImg);
+    }//GEN-LAST:event_txtUsuarioFocusGained
+
+    private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
+        // TODO add your handling code here:
+        lbl_input_user.setIcon(inputImg);
+    }//GEN-LAST:event_txtUsuarioFocusLost
+
+    private void txtContrasenaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaFocusGained
+        // TODO add your handling code here:
+        lbl_input_pass.setIcon(inputActiveImg);
+    }//GEN-LAST:event_txtContrasenaFocusGained
+
+    private void txtContrasenaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaFocusLost
+        // TODO add your handling code here:
+        lbl_input_pass.setIcon(inputImg);
+    }//GEN-LAST:event_txtContrasenaFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -321,6 +380,8 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_btn_registrar;
     private javax.swing.JLabel lbl_close_window;
+    private javax.swing.JLabel lbl_input_pass;
+    private javax.swing.JLabel lbl_input_user;
     private javax.swing.JLabel lbl_mini_window;
     private javax.swing.JPanel pnl_bar;
     private javax.swing.JPasswordField txtContrasena;

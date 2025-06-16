@@ -14,7 +14,7 @@ import java.awt.*;
  */
 public class login extends javax.swing.JFrame {
     private Point mouseClickPoint;
-    ImageIcon hoverBtnIcon, defaultBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
+    ImageIcon hoverBtnIcon, defaultBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon, inputImg, inputActiveImg;
     
     /**
      * Creates new form login
@@ -31,6 +31,11 @@ public class login extends javax.swing.JFrame {
         defaultBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"));
 
         lbl_sound.setIcon(sound.getInstance().getImageIcon());
+        
+        inputImg = new ImageIcon(getClass().getResource("/imagenes/input-img.png"));
+        inputActiveImg = new ImageIcon(getClass().getResource("/imagenes/input-img-active.png"));
+        txtUser.setOpaque(false);
+        txtContrasena.setOpaque(false);
     }
 
     /**
@@ -47,13 +52,15 @@ public class login extends javax.swing.JFrame {
         lbl_close_window = new javax.swing.JLabel();
         lbl_mini_window = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbl_user = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
+        lbl_input_user = new javax.swing.JLabel();
+        lbl_pass = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
         BtnLogin = new javax.swing.JButton();
+        lbl_input_pass = new javax.swing.JLabel();
         lbl_btn_login = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_crear = new javax.swing.JLabel();
         lbl_sound = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
 
@@ -116,26 +123,52 @@ public class login extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Contraseña");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+        lbl_user.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        lbl_user.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_user.setText("Usuario");
+        jPanel1.add(lbl_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Usuario");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
-
-        txtUser.setCaretColor(new java.awt.Color(0, 153, 51));
+        txtUser.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        txtUser.setForeground(new java.awt.Color(0, 0, 51));
+        txtUser.setBorder(null);
+        txtUser.setCaretColor(new java.awt.Color(204, 153, 0));
+        txtUser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUserFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUserFocusLost(evt);
+            }
+        });
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 200, -1));
+        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 222, 180, 30));
 
+        lbl_input_user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/input-img.png"))); // NOI18N
+        lbl_input_user.setText("jLabel5");
+        jPanel1.add(lbl_input_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 220, 60));
+
+        lbl_pass.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        lbl_pass.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_pass.setText("Contraseña");
+        jPanel1.add(lbl_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
+
+        txtContrasena.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        txtContrasena.setForeground(new java.awt.Color(0, 0, 51));
+        txtContrasena.setBorder(null);
         txtContrasena.setCaretColor(new java.awt.Color(0, 153, 51));
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 200, -1));
+        txtContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContrasenaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtContrasenaFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 302, 180, 30));
 
         BtnLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         BtnLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,21 +191,25 @@ public class login extends javax.swing.JFrame {
                 BtnLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 170, 40));
+        jPanel1.add(BtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 170, 40));
+
+        lbl_input_pass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/input-img.png"))); // NOI18N
+        lbl_input_pass.setText("jLabel5");
+        jPanel1.add(lbl_input_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 220, 60));
 
         lbl_btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
-        jPanel1.add(lbl_btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 200, 60));
+        jPanel1.add(lbl_btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 200, 60));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Crear cuenta");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbl_crear.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        lbl_crear.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_crear.setText("Crear cuenta");
+        lbl_crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_crear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                lbl_crearMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
+        jPanel1.add(lbl_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, -1));
 
         lbl_sound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sound-icon.png"))); // NOI18N
         lbl_sound.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,13 +260,13 @@ public class login extends javax.swing.JFrame {
         dialog.setVisible(true);
     }//GEN-LAST:event_BtnLoginActionPerformed
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void lbl_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_crearMouseClicked
         // TODO add your handling code here:
         sound.getInstance().reproducirSonido(this, 0);
         signup Signup = new signup();
         dispose();
         Signup.setVisible(true);
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_lbl_crearMouseClicked
 
     private void BtnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnLoginMouseEntered
         // TODO add your handling code here:
@@ -291,6 +328,26 @@ public class login extends javax.swing.JFrame {
         lbl_sound.setIcon(sound.getInstance().getImageIcon());
     }//GEN-LAST:event_lbl_soundMouseClicked
 
+    private void txtUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusGained
+        // TODO add your handling code here:
+        lbl_input_user.setIcon(inputActiveImg);
+    }//GEN-LAST:event_txtUserFocusGained
+
+    private void txtUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusLost
+        // TODO add your handling code here:
+        lbl_input_user.setIcon(inputImg);
+    }//GEN-LAST:event_txtUserFocusLost
+
+    private void txtContrasenaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaFocusGained
+        // TODO add your handling code here:
+        lbl_input_pass.setIcon(inputActiveImg);
+    }//GEN-LAST:event_txtContrasenaFocusGained
+
+    private void txtContrasenaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaFocusLost
+        // TODO add your handling code here:
+        lbl_input_pass.setIcon(inputImg);
+    }//GEN-LAST:event_txtContrasenaFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -329,15 +386,17 @@ public class login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnLogin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_btn_login;
     private javax.swing.JLabel lbl_close_window;
+    private javax.swing.JLabel lbl_crear;
+    private javax.swing.JLabel lbl_input_pass;
+    private javax.swing.JLabel lbl_input_user;
     private javax.swing.JLabel lbl_mini_window;
+    private javax.swing.JLabel lbl_pass;
     private javax.swing.JLabel lbl_sound;
+    private javax.swing.JLabel lbl_user;
     private javax.swing.JPanel pnl_bar;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUser;
