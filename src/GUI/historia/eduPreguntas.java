@@ -5,6 +5,7 @@
 package GUI.historia;
 
 import GUI.message.customMessage;
+import GUI.message.feedbackAlerts;
 import static challenge04.main.*;
 import javax.sound.sampled.*;
 import java.io.InputStream;
@@ -32,6 +33,15 @@ public class eduPreguntas extends javax.swing.JFrame {
         {"Organiza un programa de emprendimiento juvenil con proyectos reales del barrio", "Impone más tareas y castigos ", "Quita las clases de arte y deporte", "Solo premia a los estudiantes con promedio alto"},
         {"Ignorar el contexto emocional y seguir el plan de estudios ", "Promover espacios seguros y escuelas como zonas de paz con apoyo psicosocial ", "Cerrar la escuela temporalmente ", "Castigar a los que faltan mucho"},
         {"Aprender es un privilegio", "Solo los que terminan la universidad tienen valor ", "Todos tienen derecho a una educación de calidad, sin importar su origen", "Solo los niños urbanos deben ir al colegio"}
+    };
+    String []retroalimentacion ={
+    "La historia de Edu nos recuerda que las vocaciones más poderosas nacen de pequeños gestos llenos de significado, Su compromiso con la educación surge no de una obligación, sino del ejemplo y las historias transmitidas con amor Reflexionemos sobre el poder que tiene las acciones trasmitidas por el amor de nuestro familiares",
+    "Edu organiza una biblioteca comunitaria y lleva tabletas con energía solar. Con eso asegura acceso igualitario a la educación básica, sin importar la zona geográfica ",
+    "Edu propone materiales bilingües y proyectos en la lengua indígena. Esto respeta la diversidad cultural y lingüística, clave en una educación inclusiva y equitativa",
+    "Edu crea con ellos una emisora escolar y talleres de cocina, carpintería y diseño, Con eso asegura acceso igualitario a la educación básica, sin importar la zona geográfica",
+    "Edu apoya programas de escuelas resilientes, con talleres de arteterapia, mediación y cuidado emocional. Educar también es sanar",
+    "5.	Edu cierra el evento recordando que la educación es la llave del cambio. Como decía su abuela, solo un pueblo educado puede construir un país justo, creativo y en paz",
+    ""
     };
 
     public eduPreguntas() {
@@ -109,7 +119,7 @@ public class eduPreguntas extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alma_Niña .png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Edu.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 110, 190));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
@@ -211,6 +221,8 @@ public class eduPreguntas extends javax.swing.JFrame {
             }
 
             if (edu_correcta[edu_etapa] == alma_respuesta) {
+                feedbackAlerts dialog = new feedbackAlerts(this, true, retroalimentacion[edu_etapa]);
+                dialog.setVisible(true);
                 edu_etapa++;
                 LbPregunta.setText("");
                 dispose();
