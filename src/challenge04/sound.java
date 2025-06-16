@@ -81,7 +81,7 @@ public class sound {
             background_sound.loop(Clip.LOOP_CONTINUOUSLY);
             
             FloatControl volumeControl = (FloatControl) background_sound.getControl(FloatControl.Type.MASTER_GAIN);
-            volumeControl.setValue(-25.0f); // (-80 a +6)
+            volumeControl.setValue(-35.0f); // (-80 a +6)
             
             background_sound.start();
             reproduciendoBackground = true;

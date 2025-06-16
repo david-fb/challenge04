@@ -5,23 +5,18 @@
 package GUI;
 
 import java.util.Random;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import GUI.message.*;
+import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-
+import java.awt.*;
+import challenge04.sound;
 /**
  *
  * @author Jhon
  */
 public class modojugador extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Prueba
-     */
+    private Point mouseClickPoint;
     int idpregunta_actual = 0;
     int[] pregunta_jugador1 = new int[5];
     int puntos = 0;
@@ -30,20 +25,34 @@ public class modojugador extends javax.swing.JFrame {
     int puntos_jugador1 = 0;
     int puntos_jugador2 = 0;
     
+    ImageIcon hoverBtnIcon, defaultBtnIcon, disabledBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
+    
     public modojugador(boolean multiplayer) {
         this.multiplayer = multiplayer;
         System.out.print("Este es el Valor de Multiplayer: "+ multiplayer);
         initComponents();
-        jButton2.setVisible(false);
+        btn_avanzar.setVisible(false);
+        lbl_btn_avanzar.setVisible(false);
         preguntas_jugador();
         
         if (multiplayer){
             turno_aleatorio();
         }
         
+        hoverBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-active.png"));
+        defaultBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn.png"));
+        disabledBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-disabled.png"));
+        
+        hoverBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close-active.png"));
+        defaultBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"));
+        
+        hoverBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini-active.png"));
+        defaultBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"));
+        
+        lbl_sound.setIcon(sound.getInstance().getImageIcon());
+        
         llenarComponentes(0);
-        jLabel3.setVisible(multiplayer);
-
+        lbl_turno_jugador.setVisible(multiplayer);
     }
     
     private void turno_aleatorio (){
@@ -275,12 +284,14 @@ public class modojugador extends javax.swing.JFrame {
     private void llenarComponentes(int idpregunta) {
         // Arreglo de textos
         if (this.multiplayer){
-            jLabel3.setText ("Jugador: "+ this.turno);
+            lbl_turno_jugador.setText ("Jugador "+ this.turno);
         }
         
-        jLabel2.setText("");
-        jButton1.setEnabled(true);
-        jButton2.setVisible(false);
+        lbl_retroalimentacion.setText("");
+        btn_calificar.setEnabled(true);
+        lbl_btn_calificar.setIcon(defaultBtnIcon);
+        btn_avanzar.setVisible(false);
+        lbl_btn_avanzar.setVisible(false);
         this.idpregunta_actual = idpregunta;
         int pregunta = this.pregunta_jugador1[idpregunta];
         Object[] datos_preguntas = new Object[4];
@@ -301,7 +312,7 @@ public class modojugador extends javax.swing.JFrame {
         String[] retro = (String[]) datos_preguntas[3];
 
         // Mostrar pregunta
-        jLabel1.setText("<html>" + preguntas[pregunta] + "</html>");
+        lbl_pregunta.setText(preguntas[pregunta]);
 
         // Arreglo de JRadioButton
         JRadioButton[] radioButtons = {jRadioButton1, jRadioButton2, jRadioButton3, jRadioButton4};
@@ -329,126 +340,312 @@ public class modojugador extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        pnl_bar = new javax.swing.JPanel();
+        lbl_close_window = new javax.swing.JLabel();
+        lbl_mini_window = new javax.swing.JLabel();
+        lbl_turno_jugador = new javax.swing.JLabel();
+        lbl_pregunta = new javax.swing.JTextArea();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        btn_calificar = new javax.swing.JButton();
+        lbl_btn_calificar = new javax.swing.JLabel();
+        btn_avanzar = new javax.swing.JButton();
+        lbl_btn_avanzar = new javax.swing.JLabel();
+        lbl_retroalimentacion = new javax.swing.JTextArea();
+        lbl_sound = new javax.swing.JLabel();
+        lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(700, 500));
+        setResizable(false);
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(700, 500));
+        jPanel1.setMinimumSize(new java.awt.Dimension(700, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(700, 500));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnl_bar.setOpaque(false);
+        pnl_bar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                pnl_barMouseDragged(evt);
+            }
+        });
+        pnl_bar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnl_barMousePressed(evt);
+            }
+        });
+        pnl_bar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_close_window.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"))); // NOI18N
+        lbl_close_window.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbl_close_window.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_close_windowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_close_windowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_close_windowMouseExited(evt);
+            }
+        });
+        pnl_bar.add(lbl_close_window, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, -1, 50));
+
+        lbl_mini_window.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"))); // NOI18N
+        lbl_mini_window.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_mini_windowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_mini_windowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_mini_windowMouseExited(evt);
+            }
+        });
+        pnl_bar.add(lbl_mini_window, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 50, 50));
+
+        jPanel1.add(pnl_bar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
+
+        lbl_turno_jugador.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lbl_turno_jugador.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_turno_jugador.setText("jLabel3");
+        jPanel1.add(lbl_turno_jugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 150, -1));
+
+        lbl_pregunta.setEditable(false);
+        lbl_pregunta.setColumns(20);
+        lbl_pregunta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        lbl_pregunta.setForeground(new java.awt.Color(255, 153, 0));
+        lbl_pregunta.setLineWrap(true);
+        lbl_pregunta.setRows(5);
+        lbl_pregunta.setWrapStyleWord(true);
+        lbl_pregunta.setBorder(null);
+        lbl_pregunta.setFocusable(false);
+        lbl_pregunta.setOpaque(false);
+        jPanel1.add(lbl_pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 600, 70));
 
         buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("jRadioButton1");
+        jRadioButton1.setBorder(null);
+        jRadioButton1.setContentAreaFilled(false);
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2.setText("jRadioButton1");
+        jRadioButton2.setBorder(null);
+        jRadioButton2.setContentAreaFilled(false);
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
         buttonGroup1.add(jRadioButton3);
+        jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton3.setText("jRadioButton1");
+        jRadioButton3.setBorder(null);
+        jRadioButton3.setContentAreaFilled(false);
+        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         buttonGroup1.add(jRadioButton4);
+        jRadioButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton4.setText("jRadioButton1");
+        jRadioButton4.setBorder(null);
+        jRadioButton4.setContentAreaFilled(false);
+        jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
-        jButton1.setText("calificar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        btn_calificar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btn_calificar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_calificar.setText("Calificar");
+        btn_calificar.setBorder(null);
+        btn_calificar.setBorderPainted(false);
+        btn_calificar.setContentAreaFilled(false);
+        btn_calificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_calificar.setFocusPainted(false);
+        btn_calificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_calificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_calificarMouseExited(evt);
             }
         });
-
-        jLabel1.setText("jLabel1");
-
-        jLabel2.setText("jLabel2");
-
-        jButton2.setText("Avanzar...");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_calificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_calificarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_calificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 313, 170, 40));
 
-        jLabel3.setText("jLabel3");
+        lbl_btn_calificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        lbl_btn_calificar.setText("jLabel1");
+        jPanel1.add(lbl_btn_calificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 190, 60));
+
+        btn_avanzar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btn_avanzar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_avanzar.setText("Avanzar...");
+        btn_avanzar.setBorder(null);
+        btn_avanzar.setBorderPainted(false);
+        btn_avanzar.setContentAreaFilled(false);
+        btn_avanzar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_avanzar.setFocusPainted(false);
+        btn_avanzar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_avanzarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_avanzarMouseExited(evt);
+            }
+        });
+        btn_avanzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_avanzarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_avanzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, 180, 40));
+
+        lbl_btn_avanzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
+        jPanel1.add(lbl_btn_avanzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 190, 60));
+
+        lbl_retroalimentacion.setColumns(20);
+        lbl_retroalimentacion.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        lbl_retroalimentacion.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_retroalimentacion.setLineWrap(true);
+        lbl_retroalimentacion.setRows(5);
+        lbl_retroalimentacion.setWrapStyleWord(true);
+        lbl_retroalimentacion.setBorder(null);
+        lbl_retroalimentacion.setOpaque(false);
+        jPanel1.add(lbl_retroalimentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 450, 120));
+
+        lbl_sound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sound-icon.png"))); // NOI18N
+        lbl_sound.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_soundMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbl_sound, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 60, 60));
+
+        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_general.png"))); // NOI18N
+        jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(100, 100, 100))
-                    .addComponent(jRadioButton1)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
-                        .addGap(87, 87, 87)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_calificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calificarActionPerformed
         // TODO add your handling code here:
+        sound.getInstance().reproducirSonido(this, 0);
         validar_respuesta();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_calificarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_avanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_avanzarActionPerformed
         // TODO add your handling code here:
+        sound.getInstance().reproducirSonido(this, 0);
         if (this.idpregunta_actual == 4) {
             finalizar_juego();
         } else {
             llenarComponentes(this.idpregunta_actual + 1);
         }
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_avanzarActionPerformed
+
+    private void btn_calificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_calificarMouseEntered
+        // TODO add your handling code here:
+        if(btn_calificar.isEnabled()){
+            lbl_btn_calificar.setIcon(hoverBtnIcon);
+        }
+    }//GEN-LAST:event_btn_calificarMouseEntered
+
+    private void btn_calificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_calificarMouseExited
+        // TODO add your handling code here:
+        if(btn_calificar.isEnabled()){
+            lbl_btn_calificar.setIcon(defaultBtnIcon);
+        }
+        
+    }//GEN-LAST:event_btn_calificarMouseExited
+
+    private void btn_avanzarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_avanzarMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_avanzar.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_btn_avanzarMouseEntered
+
+    private void btn_avanzarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_avanzarMouseExited
+        // TODO add your handling code here:
+        lbl_btn_avanzar.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_btn_avanzarMouseExited
+
+    private void lbl_close_windowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_close_windowMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_lbl_close_windowMouseClicked
+
+    private void lbl_close_windowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_close_windowMouseEntered
+        // TODO add your handling code here:
+        lbl_close_window.setIcon(hoverBtnCloseIcon);
+    }//GEN-LAST:event_lbl_close_windowMouseEntered
+
+    private void lbl_close_windowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_close_windowMouseExited
+        // TODO add your handling code here:
+        lbl_close_window.setIcon(defaultBtnCloseIcon);
+    }//GEN-LAST:event_lbl_close_windowMouseExited
+
+    private void lbl_mini_windowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_mini_windowMouseClicked
+        // TODO add your handling code here:
+        setState(Frame.ICONIFIED);
+    }//GEN-LAST:event_lbl_mini_windowMouseClicked
+
+    private void lbl_mini_windowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_mini_windowMouseEntered
+        // TODO add your handling code here:
+        lbl_mini_window.setIcon(hoverBtnMiniIcon);
+    }//GEN-LAST:event_lbl_mini_windowMouseEntered
+
+    private void lbl_mini_windowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_mini_windowMouseExited
+        // TODO add your handling code here:
+        lbl_mini_window.setIcon(defaultBtnMiniIcon);
+    }//GEN-LAST:event_lbl_mini_windowMouseExited
+
+    private void pnl_barMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_barMouseDragged
+        // TODO add your handling code here:
+        Point frameLocation = getLocation();
+        int x = frameLocation.x + evt.getX() - mouseClickPoint.x;
+        int y = frameLocation.y + evt.getY() - mouseClickPoint.y;
+        setLocation(x, y);
+    }//GEN-LAST:event_pnl_barMouseDragged
+
+    private void pnl_barMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_barMousePressed
+        // TODO add your handling code here:
+        mouseClickPoint = evt.getPoint();
+    }//GEN-LAST:event_pnl_barMousePressed
+
+    private void lbl_soundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_soundMouseClicked
+        // TODO add your handling code here:
+        sound.getInstance().reproducirSonido(this, 0);
+        sound.getInstance().toogleBackgroundAudio();
+        lbl_sound.setIcon(sound.getInstance().getImageIcon());
+    }//GEN-LAST:event_lbl_soundMouseClicked
 
     private void finalizar_juego() {
-        String mensaje = "";
+        String mensaje;
         if (this.multiplayer){
             if (this.puntos_jugador1 > this.puntos_jugador2){
                 mensaje = "Ganador Jugador 1";
@@ -462,12 +659,9 @@ public class modojugador extends javax.swing.JFrame {
         } else {
             mensaje = "Tu Puntuación fue: " + this.puntos;
         }
-        JOptionPane.showMessageDialog(
-                this,
-                mensaje,
-                "Resultado Final",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+
+        customMessage dialog = new customMessage(this, true, mensaje);
+        dialog.setVisible(true);
 
         // Cuando el usuario presiona "Aceptar", continúa aquí:
         new menu().setVisible(true);
@@ -484,17 +678,15 @@ public class modojugador extends javax.swing.JFrame {
                 opcion_seleccionar = radioButtons[i].getText();
             }
         }
-        if (opcion_seleccionar.isEmpty()) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Selecciona una Opción",
-                    "Error!",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+        if (opcion_seleccionar.isEmpty()) {  
+            customMessage dialog = new customMessage(this, true, "Selecciona una Opción");
+            dialog.setVisible(true);
+            
             return;
 
         }
-        jButton1.setEnabled(false);
+        btn_calificar.setEnabled(false);
+        lbl_btn_calificar.setIcon(disabledBtnIcon);
         //this.idpregunta_actual = idpregunta;
         int pregunta = this.pregunta_jugador1[this.idpregunta_actual];
         Object[] datos_preguntas = new Object[4];
@@ -514,8 +706,9 @@ public class modojugador extends javax.swing.JFrame {
         }
         String[] correctas = (String[]) datos_preguntas[2];
         String[] retro = (String[]) datos_preguntas[3];
-        jButton2.setVisible(true);
-        String mensaje = "";
+        btn_avanzar.setVisible(true);
+        lbl_btn_avanzar.setVisible(true);
+        String mensaje;
 
         if (opcion_seleccionar.equals(correctas[pregunta])) {
             this.puntos += puntos_posibles;
@@ -529,7 +722,10 @@ public class modojugador extends javax.swing.JFrame {
             }
         } else {
             mensaje = "Incorrecto!";
+            
             if (this.multiplayer){
+                customMessage dialog = new customMessage(this, true, mensaje + "\n" + "Cambio de jugador");
+                dialog.setVisible(true);
                 if (this.turno==1){
                     this.turno=2;
                 } else {
@@ -537,7 +733,7 @@ public class modojugador extends javax.swing.JFrame {
                 }
             }
         }
-        jLabel2.setText("<html>" + mensaje + "<br><br>" + retro[pregunta] + "</html>");
+        lbl_retroalimentacion.setText(mensaje + "\n" + retro[pregunta]);
     }
 
     /**
@@ -555,17 +751,23 @@ public class modojugador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_avanzar;
+    private javax.swing.JButton btn_calificar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbl_background;
+    private javax.swing.JLabel lbl_btn_avanzar;
+    private javax.swing.JLabel lbl_btn_calificar;
+    private javax.swing.JLabel lbl_close_window;
+    private javax.swing.JLabel lbl_mini_window;
+    private javax.swing.JTextArea lbl_pregunta;
+    private javax.swing.JTextArea lbl_retroalimentacion;
+    private javax.swing.JLabel lbl_sound;
+    private javax.swing.JLabel lbl_turno_jugador;
+    private javax.swing.JPanel pnl_bar;
     // End of variables declaration//GEN-END:variables
 }
