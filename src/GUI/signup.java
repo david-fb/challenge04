@@ -37,6 +37,8 @@ public class signup extends javax.swing.JFrame {
         inputActiveImg = new ImageIcon(getClass().getResource("/imagenes/input-img-active.png"));
         txtUsuario.setOpaque(false);
         txtContrasena.setOpaque(false);
+        
+        lbl_sound.setIcon(sound.getInstance().getImageIcon());
     }
 
     /**
@@ -62,6 +64,7 @@ public class signup extends javax.swing.JFrame {
         lbl_input_pass = new javax.swing.JLabel();
         BtnRegistrar = new javax.swing.JButton();
         lbl_btn_registrar = new javax.swing.JLabel();
+        lbl_sound = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -210,6 +213,14 @@ public class signup extends javax.swing.JFrame {
         lbl_btn_registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
         jPanel1.add(lbl_btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 190, -1));
 
+        lbl_sound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sound-icon.png"))); // NOI18N
+        lbl_sound.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_soundMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbl_sound, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 60, 60));
+
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-2.png"))); // NOI18N
         jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
@@ -335,6 +346,13 @@ public class signup extends javax.swing.JFrame {
         lbl_input_pass.setIcon(inputImg);
     }//GEN-LAST:event_txtContrasenaFocusLost
 
+    private void lbl_soundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_soundMouseClicked
+        // TODO add your handling code here:
+        sound.getInstance().reproducirSonido(this, 0);
+        sound.getInstance().toogleBackgroundAudio();
+        lbl_sound.setIcon(sound.getInstance().getImageIcon());
+    }//GEN-LAST:event_lbl_soundMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -383,6 +401,7 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_input_pass;
     private javax.swing.JLabel lbl_input_user;
     private javax.swing.JLabel lbl_mini_window;
+    private javax.swing.JLabel lbl_sound;
     private javax.swing.JPanel pnl_bar;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;
