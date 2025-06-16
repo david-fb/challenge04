@@ -31,11 +31,15 @@ public class mechanics extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Challenge04 - Mecánicas");
         setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
         setUndecorated(true);
+        setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -46,41 +50,42 @@ public class mechanics extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setText("Mecánicas del juego");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 270, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 290, -1));
 
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 102, 102));
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("i.   Elección múltiple con preguntas basadas en escenarios reales.\nii.  Turnos alternados en el modo versus.\niii. Pérdida de vidas solo en la fase de historia.\niv. Progresión narrativa mediante escenarios educativos y sociales.\nv. Sistema de puntos y marcador por jugador.");
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setFocusable(false);
+        jTextArea1.setOpaque(false);
         jTextArea1.setPreferredSize(new java.awt.Dimension(380, 136));
-        jPanel1.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 480, 200));
+        jPanel1.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 480, 200));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 153, 0));
         jLabel2.setText("Presione cualquier tecla para continuar...");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 260, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 290, -1));
+
+        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_general.png"))); // NOI18N
+        jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -135,5 +140,6 @@ public class mechanics extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lbl_background;
     // End of variables declaration//GEN-END:variables
 }
