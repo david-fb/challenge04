@@ -5,6 +5,7 @@
 package GUI.historia;
 
 import GUI.message.customMessage;
+import GUI.message.feedbackAlerts;
 import static challenge04.main.*;
 
 /**
@@ -29,6 +30,14 @@ public class almaPreguntas extends javax.swing.JFrame {
         {"Repartir más comida procesada ", "Crear una red de pesca sostenible y limpieza de manglares", "Importar carne de res", "Construir un puerto pesquero industrial"},
         {"Dar bonos para comprar en supermercados", "Talleres de cocina con productos de huertos + venta de excedentes", "Repartir suplementos de hierro ", "Construir un McDonald`s comunitario"},
         {"Pedir ayuda a ONGs internacionales", "Crear una cooperativa de mujeres para hacer harina de chontaduro ", "Esperar a que el gobierno construya carreteras", "Vender las tierras a empresas"}
+    };
+    String[] retroalimentacion = {
+        "Urumita, aunque no es una zona tradicionalmente reconocida por el café como otras del Eje Cafetero, tiene el potencial de producir café diferenciado, aprovechando características propias del suelo y microclima.",
+        "Haciendo su propia producción podría tener muchas más utilidades que podría ser de mucha ayuda para la economía local",
+        "Alma visualiza que se puede empaquetar el frijol con diseños wayuu. Esto atrae turistas y salva semillas nativas, con esto ayuda a restaurar y promover el uso sostenible de los ecosistemas terrestres",
+        "Los pescadores vendiendo directamente y limpiando las playas contribuyen a en la conservación y uso sostenible de los océanos, mares y recursos marinos para el desarrollo sostenible,  Inconscientemente se han dado soluciones que combate el hambre van muy de mano de soluciones sostenibles y de desarrollo de agricultura, y eso buscan los objetivos de desarrollo sostenible, Alma ya desarrollo una manera de pensar en pro de combatir el hambre ya es una universitaria estudiando Ciencias de la Alimentación",
+        "Alma organizará el Festival de la Arepa de Huevo con Verduras, Así se promueve alimentación sana y economía local siendo inclusivos, seguros, resilientes y sostenibles",
+        "Alma las ayudará mediante un proyecto a comprar un molino y vender la harina a panaderías. Así cumple a combatir el hambre y la igualdad de género"
     };
 
     public almaPreguntas() {
@@ -208,6 +217,8 @@ public class almaPreguntas extends javax.swing.JFrame {
             }
 
             if (alma_correcta[alma_etapa] == alma_respuesta) {
+                feedbackAlerts dialog = new feedbackAlerts(this, true, retroalimentacion[alma_etapa]);
+                dialog.setVisible(true);
                 alma_etapa++;
                 LbPregunta.setText("");
                 dispose();
@@ -221,7 +232,7 @@ public class almaPreguntas extends javax.swing.JFrame {
 
                     menuH.setVisible(true);
                 }
-                
+
             } else {
                 //JOptionPane.showMessageDialog(this, "Error, intente nuevamente");
                 customMessage dialog = new customMessage(this, true, "Incorrecto, vamos de nuevo");
@@ -248,7 +259,6 @@ public class almaPreguntas extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_BtnRespuestaActionPerformed
-
 
     /**
      * @param args the command line arguments

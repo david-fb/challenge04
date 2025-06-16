@@ -195,7 +195,7 @@ public class alma extends javax.swing.JFrame {
 
         if (alma_etapa == 1) {
             mostrarBoton();
-            LbTitulo.setText("URIMITA");
+            LbTitulo.setText("URUMITA");
             TAparrafo.setText("""
                               Urumita es hogar de por lo menos 500 familias que dependen del café para su sustento. Urumita produce café arábigo de altura, pero no tienen maquinaria para procesarlo. Los intermediarios les pagan 2,000 por kilo y lo venden en 20,000.""");
         }
