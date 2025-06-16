@@ -38,10 +38,14 @@ public class start extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Challenge04");
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(700, 500));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -51,17 +55,19 @@ public class start extends javax.swing.JFrame {
         pnlStart.setBackground(new java.awt.Color(255, 255, 255));
         pnlStart.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         pnlStart.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pnlStart.setPreferredSize(new java.awt.Dimension(500, 400));
+        pnlStart.setMaximumSize(new java.awt.Dimension(700, 500));
+        pnlStart.setMinimumSize(new java.awt.Dimension(700, 500));
+        pnlStart.setPreferredSize(new java.awt.Dimension(700, 500));
         pnlStart.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
-        pnlStart.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+        pnlStart.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
 
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 102, 102));
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("El mundo enfrenta desafíos globales sin precedentes: desigualdad económica, pobreza extrema, cambio climático y crisis sociales que amenazan el desarrollo equitativo y el futuro del planeta. Frente a esta realidad, en 2015, las Naciones Unidas adoptaron los Objetivos de Desarrollo Sostenible (ODS), un conjunto de 17 metas diseñadas para erradicar la pobreza, proteger el medio ambiente y garantizar prosperidad para todos antes del 2030. ");
@@ -69,13 +75,17 @@ public class start extends javax.swing.JFrame {
         jTextArea1.setAutoscrolls(false);
         jTextArea1.setBorder(null);
         jTextArea1.setFocusable(false);
-        jTextArea1.setPreferredSize(new java.awt.Dimension(380, 110));
+        jTextArea1.setOpaque(false);
         jTextArea1.setVerifyInputWhenFocusTarget(false);
-        pnlStart.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 460, 170));
+        pnlStart.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 590, 190));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setText("Presione cualquier tecla para continuar...");
-        pnlStart.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 260, -1));
+        pnlStart.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 290, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_general.png"))); // NOI18N
+        pnlStart.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,6 +152,7 @@ public class start extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPanel pnlStart;
     // End of variables declaration//GEN-END:variables
