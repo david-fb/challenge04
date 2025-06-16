@@ -5,6 +5,7 @@
 package GUI;
 import static challenge04.main.*;
 import GUI.message.*;
+import challenge04.sound;
 import javax.swing.ImageIcon;
 import java.awt.*;
 /**
@@ -14,6 +15,7 @@ import java.awt.*;
 public class login extends javax.swing.JFrame {
     private Point mouseClickPoint;
     ImageIcon hoverBtnIcon, defaultBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
+    
     /**
      * Creates new form login
      */
@@ -27,6 +29,8 @@ public class login extends javax.swing.JFrame {
         
         hoverBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini-active.png"));
         defaultBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"));
+
+        lbl_sound.setIcon(sound.getInstance().getImageIcon());
     }
 
     /**
@@ -50,6 +54,7 @@ public class login extends javax.swing.JFrame {
         BtnLogin = new javax.swing.JButton();
         lbl_btn_login = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lbl_sound = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -169,6 +174,14 @@ public class login extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
 
+        lbl_sound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sound-icon.png"))); // NOI18N
+        lbl_sound.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_soundMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbl_sound, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 60, 60));
+
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-2.png"))); // NOI18N
         jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
@@ -193,6 +206,7 @@ public class login extends javax.swing.JFrame {
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
         // TODO add your handling code here:
+        sound.getInstance().reproducirSonido(this, 0);
         String nombre = txtUser.getText();
         String contrasena = txtContrasena.getText();
         
@@ -211,6 +225,7 @@ public class login extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
+        sound.getInstance().reproducirSonido(this, 0);
         signup Signup = new signup();
         dispose();
         Signup.setVisible(true);
@@ -269,6 +284,13 @@ public class login extends javax.swing.JFrame {
         lbl_mini_window.setIcon(defaultBtnMiniIcon);
     }//GEN-LAST:event_lbl_mini_windowMouseExited
 
+    private void lbl_soundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_soundMouseClicked
+        // TODO add your handling code here:
+        sound.getInstance().reproducirSonido(this, 0);
+        sound.getInstance().toogleBackgroundAudio();
+        lbl_sound.setIcon(sound.getInstance().getImageIcon());
+    }//GEN-LAST:event_lbl_soundMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -315,6 +337,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_btn_login;
     private javax.swing.JLabel lbl_close_window;
     private javax.swing.JLabel lbl_mini_window;
+    private javax.swing.JLabel lbl_sound;
     private javax.swing.JPanel pnl_bar;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUser;

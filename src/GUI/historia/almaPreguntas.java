@@ -5,12 +5,7 @@
 package GUI.historia;
 
 import GUI.message.customMessage;
-import static challenge04.main.alma_etapa;
-import static challenge04.main.alma_correcta;
-import static challenge04.main.vidas_historia;
-import javax.sound.sampled.*;
-import java.io.InputStream;
-import javax.swing.JOptionPane;
+import static challenge04.main.*;
 
 /**
  *
@@ -220,6 +215,7 @@ public class almaPreguntas extends javax.swing.JFrame {
                     alma Alma = new alma();
                     Alma.setVisible(true);
                 } else {
+                    edu_etapa_bloqueada = false;
                     menuHistoria menuH = new menuHistoria();
                     dispose();
 
@@ -252,25 +248,7 @@ public class almaPreguntas extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_BtnRespuestaActionPerformed
-    private void reproducirSonido() {
-        try {
-            // Esta línea busca el archivo desde la carpeta src/sonidos/
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("sonidos/avesDeFondo.wav");
 
-            if (inputStream == null) {
-                JOptionPane.showMessageDialog(this, "Archivo no encontrado. Verifica la ruta y el nombre.");
-                return;
-            }
-
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(inputStream);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al reproducir sonido: " + e.getMessage());
-        }
-    }
 
     /**
      * @param args the command line arguments

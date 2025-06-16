@@ -7,6 +7,8 @@ package GUI.historia;
 import GUI.*;
 import java.awt.*;
 import javax.swing.ImageIcon;
+import static challenge04.main.*;
+import challenge04.sound;
 
 /**
  *
@@ -15,7 +17,7 @@ import javax.swing.ImageIcon;
 public class menuHistoria extends javax.swing.JFrame {
 
     private Point mouseClickPoint;
-    ImageIcon hoverBtnIcon, defaultBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
+    ImageIcon hoverBtnIcon, defaultBtnIcon, disabledBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
     /**
      * Creates new form menu
      */
@@ -23,12 +25,25 @@ public class menuHistoria extends javax.swing.JFrame {
         initComponents();
         hoverBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-active.png"));
         defaultBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn.png"));
+        disabledBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-disabled.png"));
         
         hoverBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close-active.png"));
         defaultBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"));
         
         hoverBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini-active.png"));
         defaultBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"));
+        
+        BtnAlma.setText("Alma (ODS 2)");
+        if(alma_etapa_bloqueada){
+            BtnAlma.setText("Alma (ODS 2) (bloqueado)");
+            lbl_btn_alma.setIcon(disabledBtnIcon);
+        }
+        
+        BtnEDu.setText("Edu (ODS 4)");
+        if(edu_etapa_bloqueada){
+            BtnEDu.setText("Edu (ODS 4) (bloqueado)");
+            lbl_btn_edu.setIcon(disabledBtnIcon);
+        }
     }
 
     /**
@@ -53,6 +68,7 @@ public class menuHistoria extends javax.swing.JFrame {
         btn_volver = new javax.swing.JButton();
         lbl_btn_volver = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lbl_sound = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -169,6 +185,7 @@ public class menuHistoria extends javax.swing.JFrame {
         BtnEDu.setBorderPainted(false);
         BtnEDu.setContentAreaFilled(false);
         BtnEDu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnEDu.setFocusPainted(false);
         BtnEDu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BtnEDuMouseEntered(evt);
@@ -216,6 +233,14 @@ public class menuHistoria extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
+        lbl_sound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sound-icon.png"))); // NOI18N
+        lbl_sound.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_soundMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbl_sound, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 60, 60));
+
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-historia.png"))); // NOI18N
         jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
@@ -248,13 +273,19 @@ public class menuHistoria extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void BtnAlmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlmaActionPerformed
+        if(alma_etapa_bloqueada){
+            return;
+        }
         alma Alma = new alma();
         dispose();
         Alma.setVisible(true);
     }//GEN-LAST:event_BtnAlmaActionPerformed
 
     private void BtnEDuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEDuActionPerformed
-       edu Edu = new edu();
+        if(edu_etapa_bloqueada){
+            return;
+        }
+        edu Edu = new edu();
         dispose();
         Edu.setVisible(true);
     }//GEN-LAST:event_BtnEDuActionPerformed
@@ -271,21 +302,33 @@ public class menuHistoria extends javax.swing.JFrame {
 
     private void BtnAlmaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAlmaMouseEntered
         // TODO add your handling code here:
+        if(alma_etapa_bloqueada){
+            return;
+        }
         lbl_btn_alma.setIcon(hoverBtnIcon);
     }//GEN-LAST:event_BtnAlmaMouseEntered
 
     private void BtnAlmaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAlmaMouseExited
         // TODO add your handling code here:
+        if(alma_etapa_bloqueada){
+            return;
+        }
         lbl_btn_alma.setIcon(defaultBtnIcon);
     }//GEN-LAST:event_BtnAlmaMouseExited
 
     private void BtnEDuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEDuMouseEntered
         // TODO add your handling code here:
+        if(edu_etapa_bloqueada){
+            return;
+        }
         lbl_btn_edu.setIcon(hoverBtnIcon);
     }//GEN-LAST:event_BtnEDuMouseEntered
 
     private void BtnEDuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEDuMouseExited
         // TODO add your handling code here:
+        if(edu_etapa_bloqueada){
+            return;
+        }
         lbl_btn_edu.setIcon(defaultBtnIcon);
     }//GEN-LAST:event_BtnEDuMouseExited
 
@@ -342,6 +385,13 @@ public class menuHistoria extends javax.swing.JFrame {
         mouseClickPoint = evt.getPoint();
     }//GEN-LAST:event_pnl_barMousePressed
 
+    private void lbl_soundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_soundMouseClicked
+        // TODO add your handling code here:
+        sound.getInstance().reproducirSonido(this, 0);
+        sound.getInstance().toogleBackgroundAudio();
+        lbl_sound.setIcon(sound.getInstance().getImageIcon());
+    }//GEN-LAST:event_lbl_soundMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -394,6 +444,7 @@ public class menuHistoria extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_btn_volver;
     private javax.swing.JLabel lbl_close_window;
     private javax.swing.JLabel lbl_mini_window;
+    private javax.swing.JLabel lbl_sound;
     private javax.swing.JPanel pnl_bar;
     // End of variables declaration//GEN-END:variables
 }

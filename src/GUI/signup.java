@@ -5,6 +5,7 @@
 package GUI;
 import GUI.message.customMessage;
 import static challenge04.main.*;
+import challenge04.sound;
 import java.awt.*;
 import javax.swing.ImageIcon;
 
@@ -16,6 +17,8 @@ public class signup extends javax.swing.JFrame {
 
     private Point mouseClickPoint;
     ImageIcon hoverBtnIcon, defaultBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
+    sound Sound = new sound();
+    
     /**
      * Creates new form sign up
      */
@@ -191,6 +194,7 @@ public class signup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
+        Sound.reproducirSonido(this, 0);
         String nombre = txtUsuario.getText();
         String contrasena = txtContrasena.getText();
         boolean respuesta = crearUsuario(nombre, contrasena);
@@ -213,6 +217,7 @@ public class signup extends javax.swing.JFrame {
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
         // TODO add your handling code here:
+        Sound.reproducirSonido(this, 0);
         login Login = new login();
         dispose();
         Login.setVisible(true);

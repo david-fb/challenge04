@@ -5,9 +5,7 @@
 package GUI.historia;
 
 import GUI.message.customMessage;
-import static challenge04.main.edu_etapa;
-import static challenge04.main.edu_correcta;
-import static challenge04.main.vidas_historia;
+import static challenge04.main.*;
 import javax.sound.sampled.*;
 import java.io.InputStream;
 import javax.swing.JOptionPane;
@@ -221,6 +219,8 @@ public class eduPreguntas extends javax.swing.JFrame {
                     dispose();
                     Edu.setVisible(true);
                 } else {
+                    edu_etapa_bloqueada = false;
+                    modo_historia_completa = true;
                     menuHistoria menuH = new menuHistoria();
                     dispose();
 

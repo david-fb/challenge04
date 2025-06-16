@@ -15,19 +15,19 @@ public class alma extends javax.swing.JFrame {
 
     String[] titulos = {
         "ALMA",
-        "Importancia del cafe",
-        "Expedicion de alma",
+        "Importancia del café",
+        "Expedición de Alma",
         "Alma en Riohacha",
         "Alma en Cartagena",
-        "Pasantia en Quibdo"
+        "Pasantía en Quibdó"
     };
     String[] contextos = {
-        "Alma nace del sentimiento y necesidad de muchos de los niños de Uribia que pasan hambre diariamente, por eso Alma nace con el fin de combatir las necesidades básicas insatisfechas. La inseguridad alimentaria y desnutrición mediante acciones y compartiendo conocimiento que desarrollara en su aventura, Alma debe adquirir conocimiento, ayúdala a pasar su educación en la escuela Alfonso López Pumarejoro pero debe conocer sobre sus tierras de origen. Alma requiere aprender primero bases e información importante para combatir el hambre, pero como todo niño debe empezar por la escuela.",
-        "La producción de café en Urumita es fundamental para la economía local, ya que más del 2.83% de la producción nacional proviene de esta región. Urumita, conocida como El Jardín del Sur de La Guajira",
-        "Alma en una de las expediciones de la escuela viaja al municipio vecino de Distracción ve cultivos de frijol guajiro secos por el clima.",
-        "Alma ha crecido en su manera de pensar y visualizar su entorno por lo cual sigue su educación en Riohacha.",
-        "En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia. Una nutricionista le explica: En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia. Una nutricionista le explica:",
-        "Alma aprendió mucho. Finalmente deciden hacer una pasantía en el Quibdo en el Barrio el reposo"
+        "Alma nace del sentimiento y necesidad de muchos de los niños de Uribia que pasan hambre diariamente, por eso Alma nace con el fin de combatir las necesidades básicas insatisfechas. La inseguridad alimentaria y desnutrición, mediante acciones y compartiendo conocimiento que desarrollará en su aventura. Alma debe adquirir conocimiento, ayúdala a pasar su educación en la escuela Alfonso López Pumarejo, pero debe conocer sobre sus tierras de origen. Alma requiere aprender primero bases e información importante para combatir el hambre, pero como todo niño debe empezar por la escuela.",
+        "La producción de café en Urumita es fundamental para la economía local, ya que más del 2.83% de la producción nacional proviene de esta región. Urumita, conocida como 'El Jardín del Sur de La Guajira'.",
+        "Alma, en una de las expediciones de la escuela, viaja al municipio vecino de Distracción y ve cultivos de fríjol guajiro secos por el clima.",
+        "Alma ha crecido en su manera de pensar y visualizar su entorno, por lo cual sigue su educación en Riohacha.",
+        "En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia. Una nutricionista le explica: 'En esta etapa llega a Cartagena y ve que, en barrios pobres como Olaya Herrera, el 50% de los niños tienen anemia.'",
+        "Alma aprendió mucho. Finalmente, deciden hacer una pasantía en Quibdó, en el barrio El Reposo."
     };
 
     public alma() {

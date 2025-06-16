@@ -4,6 +4,7 @@
  */
 package GUI.message;
 
+import challenge04.sound;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -14,7 +15,7 @@ import javax.swing.ImageIcon;
 public class customMessage extends javax.swing.JDialog {
 
     ImageIcon hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnOkIcon, defaultBtnOKIcon;
-    
+    sound Sound = new sound();
     /**
      * Creates new form customMessage
      * @param parent
@@ -157,6 +158,7 @@ public class customMessage extends javax.swing.JDialog {
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         // TODO add your handling code here:
+        Sound.reproducirSonido(this, 0);
         dispose();
     }//GEN-LAST:event_btn_okActionPerformed
 

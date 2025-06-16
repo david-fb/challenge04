@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI.historia;
-
-import GUI.*;
+import static challenge04.main.*;
 
 /**
  *
@@ -114,35 +113,32 @@ public class llimbo extends javax.swing.JFrame {
 
         }
         if (estado == 2) {
-            LbTitulo.setText("objetiivos de desarrollo sosttennible");
+            LbTitulo.setText("Objetivos de desarrollo sostennible");
             TAparrafo.setText("""
                               Este proyecto explora los Objetivos de Desarrollo Sostenible (ODS) de la ONU, un llamado global para:
-                              ☺Erradicar la pobreza,
-                              ☺Proteger el planeta,
-                              ☺Asegurar la prosperidad para todos.
+                               - Erradicar la pobreza,
+                               - Proteger el planeta,
+                               - Asegurar la prosperidad para todos.
                               Analizaremos su origen, importancia y c\u00f3mo Colombia est\u00e1 trabajando para alcanzar estas metas antes de 2030. Tambi\u00e9n exploraremos los desaf\u00edos y oportunidades que presenta la implementaci\u00f3n de los ODS en el contexto colombiano.""");
         }
         if (estado == 3) {
             LbTitulo.setText("¿Por qué se crearon los ODS?");
             TAparrafo.setText("""
                               Los ODS surgieron como una necesidad para combatir problemas como:
-                              \u263aDesigualdad econ\u00f3mica,
-                              \u263aPobreza extrema,
-                              \u263aCambio clim\u00e1tico.
+                                - Desigualdad econ\u00f3mica,
+                                - Pobreza extrema,
+                                - Cambio clim\u00e1tico.
                               Vivimos en una sociedad desigual donde algunas personas tienen mucho dinero y otras muy poco. Esto limita el acceso a necesidades b\u00e1sicas (servicios esenciales, alimentos, educaci\u00f3n), generando pobreza no solo material, sino tambi\u00e9n mental.
                               Los ODS son un plan global propuesto por la ONU en 2015 como parte de la Agenda 2030 para mejorar el mundo en temas clave.""");
-        } if (estado ==4){
-        
-        /*
-        */
-        
-        menuHistoria menuH = new menuHistoria();
-        dispose();
-        
-        menuH.setVisible(true);
+        }
+        if (estado == 4) {
+            
+            alma_etapa_bloqueada = false;
+            menuHistoria menuH = new menuHistoria();
+            dispose();
+            menuH.setVisible(true);
         }
 
-        
     }//GEN-LAST:event_formKeyPressed
 
     /**
