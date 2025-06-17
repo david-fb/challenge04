@@ -307,21 +307,24 @@ public class almaPreguntas extends javax.swing.JFrame {
                 }
 
             } else {
-                //JOptionPane.showMessageDialog(this, "Error, intente nuevamente");
-                customMessage dialog = new customMessage(this, true, "Incorrecto, vamos de nuevo");
-                dialog.setVisible(true);
                 vidas_historia--;
-                dispose();
                 if (alma_etapa < 6 && vidas_historia > 0) {
+                    customMessage dialog = new customMessage(this, true, "Incorrecto, vamos de nuevo");
+                    dialog.setVisible(true);
                     alma Alma = new alma();
                     Alma.setVisible(true);
                 } else {
+                    
+                    customMessage msgRegreso = new customMessage(this, true, "Te quedaste sin vidas!! Intentalo de nuevo");
+                    msgRegreso.setVisible(true);
+                
                     menuHistoria menuH = new menuHistoria();
                     dispose();
                     vidas_historia = 3;
                     alma_etapa = 0;
                     menuH.setVisible(true);
                 }
+                dispose();
             }
 
         } else {

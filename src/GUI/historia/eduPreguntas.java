@@ -313,23 +313,28 @@ public class eduPreguntas extends javax.swing.JFrame {
                     menuH.setVisible(true);
                 }
 
-            } else {
-                //JOptionPane.showMessageDialog(this, "Error, intente nuevamente");
-                customMessage dialog = new customMessage(this, true, "Incorrecto, vamos de nuevo");
-                dialog.setVisible(true);
+            } else {                
                 vidas_historia--;
-                dispose();
+                
                 if (edu_etapa < 6 && vidas_historia > 0) {
+                    customMessage dialog = new customMessage(this, true, "Incorrecto, vamos de nuevo");
+                    dialog.setVisible(true);
+                    
                     edu Edu = new edu();
                     dispose();
                     Edu.setVisible(true);
                 } else {
+                    
+                    customMessage msgRegreso = new customMessage(this, true, "Te quedaste sin vidas!! Intentalo de nuevo");
+                    msgRegreso.setVisible(true);
+                    
                     menuHistoria menuH = new menuHistoria();
                     dispose();
                     vidas_historia = 3;
                     edu_etapa = 0;
                     menuH.setVisible(true);
                 }
+                dispose();
             }
 
         } else {
