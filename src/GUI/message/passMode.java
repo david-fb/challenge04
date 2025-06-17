@@ -63,7 +63,6 @@ public class passMode extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        pnl_principal.setEnabled(false);
         pnl_principal.setMaximumSize(new java.awt.Dimension(300, 150));
         pnl_principal.setMinimumSize(new java.awt.Dimension(300, 150));
         pnl_principal.setOpaque(false);
