@@ -280,6 +280,9 @@ public class menu extends javax.swing.JFrame {
 
                 lbl_btn_versus.setIcon(defaultBtnIcon);
                 btn_versus.setText("VERSUS");
+                
+                edu_etapa_bloqueada = false;
+                alma_etapa_bloqueada = false;
 
             } else {
                 customMessage dialog = new customMessage(null, true, "Clave erronea");
