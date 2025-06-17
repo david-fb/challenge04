@@ -5,6 +5,7 @@
 package GUI.historia;
 
 import GUI.message.customMessage;
+import GUI.message.diplomaAlerts;
 import GUI.message.feedbackAlerts;
 import static challenge04.main.*;
 import javax.sound.sampled.*;
@@ -296,13 +297,18 @@ public class eduPreguntas extends javax.swing.JFrame {
                 dialog.setVisible(true);
                 edu_etapa++;
                 LbPregunta.setText("");
-                dispose();
+                
                 if (edu_etapa < 6 && vidas_historia > 0) {
                     edu Edu = new edu();
                     dispose();
                     Edu.setVisible(true);
                 } else {
+                    
+                    diplomaAlerts DiplomaAlert = new diplomaAlerts(this, true, "Ayudaste a Edu a combartir la precariedad en la educación, lo cual persigue el objetivo de desarrollo sostenible No 4");
+                    DiplomaAlert.setVisible(true);
+                    
                     edu_etapa_bloqueada = false;
+                    edu_etapa = 0;
                     modo_historia_completa = true;
                     if (usuarioActual != -1) {
                         modos_historia_completa[usuarioActual] = true;
@@ -312,6 +318,7 @@ public class eduPreguntas extends javax.swing.JFrame {
 
                     menuH.setVisible(true);
                 }
+                dispose();
 
             } else {                
                 vidas_historia--;

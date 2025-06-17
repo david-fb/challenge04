@@ -5,6 +5,7 @@
 package GUI.historia;
 
 import GUI.message.customMessage;
+import GUI.message.diplomaAlerts;
 import GUI.message.feedbackAlerts;
 import static challenge04.main.*;
 import challenge04.sound;
@@ -294,17 +295,22 @@ public class almaPreguntas extends javax.swing.JFrame {
                 dialog.setVisible(true);
                 alma_etapa++;
                 LbPregunta.setText("");
-                dispose();
+                
                 if (alma_etapa < 6 && vidas_historia > 0) {
                     alma Alma = new alma();
                     Alma.setVisible(true);
                 } else {
+                    diplomaAlerts DiplomaAlert = new diplomaAlerts(this, true, "Ayudaste a Alma a crecer desde una niña de Uribia hasta una experta en seguridad alimentaria. Recibe su diploma virtual de la ONU por contribuir al ODS 2");
+                    DiplomaAlert.setVisible(true);
+                    
                     edu_etapa_bloqueada = false;
+                    alma_etapa = 0;
                     menuHistoria menuH = new menuHistoria();
                     dispose();
 
                     menuH.setVisible(true);
                 }
+                dispose();
 
             } else {
                 vidas_historia--;
