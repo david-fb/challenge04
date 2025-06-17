@@ -32,19 +32,19 @@ public class eduPreguntas extends javax.swing.JFrame {
     String[][] opciones = {
         {"Impone más tareas y castigos.", "Su abuela, una maestra jubilada que le contaba historias sobre la falta de acceso a la educación", "Un profesor extranjero que lo visitó en la infancia", "Un documental que vio sobre países desarrollados."},
         {"Exigir que se evalúe a los estudiantes con pruebas nacionales", "Reunir a la comunidad para crear un aula abierta y traer libros físicos y digitales", "Enseñar solo a los niños con buenas notas", "Pedir que los niños viajen a la ciudad más cercana"},
-        {"Eliminar los contenidos indígenas del currículo", "Traer profesores extranjeros con doctorado", "Incluir saberes ancestrales en el currículo escolar, respetando la lengua y cosmovisión ","Imponer libros en español técnico"},
+        {"Eliminar los contenidos indígenas del currículo", "Traer profesores extranjeros con doctorado", "Incluir saberes ancestrales en el currículo escolar, respetando la lengua y cosmovisión ", "Imponer libros en español técnico"},
         {"Organiza un programa de emprendimiento juvenil con proyectos reales del barrio", "Impone más tareas y castigos ", "Quita las clases de arte y deporte", "Solo premia a los estudiantes con promedio alto"},
         {"Ignorar el contexto emocional y seguir el plan de estudios ", "Promover espacios seguros y escuelas como zonas de paz con apoyo psicosocial ", "Cerrar la escuela temporalmente ", "Castigar a los que faltan mucho"},
         {"Aprender es un privilegio", "Solo los que terminan la universidad tienen valor ", "Todos tienen derecho a una educación de calidad, sin importar su origen", "Solo los niños urbanos deben ir al colegio"}
     };
-    String []retroalimentacion ={
-    "La historia de Edu nos recuerda que las vocaciones más poderosas nacen de pequeños gestos llenos de significado, Su compromiso con la educación surge no de una obligación, sino del ejemplo y las historias transmitidas con amor Reflexionemos sobre el poder que tiene las acciones trasmitidas por el amor de nuestro familiares",
-    "Edu organiza una biblioteca comunitaria y lleva tabletas con energía solar. Con eso asegura acceso igualitario a la educación básica, sin importar la zona geográfica ",
-    "Edu propone materiales bilingües y proyectos en la lengua indígena. Esto respeta la diversidad cultural y lingüística, clave en una educación inclusiva y equitativa",
-    "Edu crea con ellos una emisora escolar y talleres de cocina, carpintería y diseño, Con eso asegura acceso igualitario a la educación básica, sin importar la zona geográfica",
-    "Edu apoya programas de escuelas resilientes, con talleres de arteterapia, mediación y cuidado emocional. Educar también es sanar",
-    "5.	Edu cierra el evento recordando que la educación es la llave del cambio. Como decía su abuela, solo un pueblo educado puede construir un país justo, creativo y en paz",
-    ""
+    String[] retroalimentacion = {
+        "La historia de Edu nos recuerda que las vocaciones más poderosas nacen de pequeños gestos llenos de significado, Su compromiso con la educación surge no de una obligación, sino del ejemplo y las historias transmitidas con amor Reflexionemos sobre el poder que tiene las acciones trasmitidas por el amor de nuestro familiares",
+        "Edu organiza una biblioteca comunitaria y lleva tabletas con energía solar. Con eso asegura acceso igualitario a la educación básica, sin importar la zona geográfica ",
+        "Edu propone materiales bilingües y proyectos en la lengua indígena. Esto respeta la diversidad cultural y lingüística, clave en una educación inclusiva y equitativa",
+        "Edu crea con ellos una emisora escolar y talleres de cocina, carpintería y diseño, Con eso asegura acceso igualitario a la educación básica, sin importar la zona geográfica",
+        "Edu apoya programas de escuelas resilientes, con talleres de arteterapia, mediación y cuidado emocional. Educar también es sanar",
+        "5.	Edu cierra el evento recordando que la educación es la llave del cambio. Como decía su abuela, solo un pueblo educado puede construir un país justo, creativo y en paz",
+        ""
     };
     
     private Point mouseClickPoint;
@@ -304,6 +304,9 @@ public class eduPreguntas extends javax.swing.JFrame {
                 } else {
                     edu_etapa_bloqueada = false;
                     modo_historia_completa = true;
+                    if (usuarioActual != -1) {
+                        modos_historia_completa[usuarioActual] = true;
+                    }
                     menuHistoria menuH = new menuHistoria();
                     dispose();
 

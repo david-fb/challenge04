@@ -261,6 +261,7 @@ public class menu extends javax.swing.JFrame {
         sound.getInstance().reproducirSonido(this, 0);
         login Login = new login();
         dispose();
+        cerrarsesion();
         Login.setVisible(true);
     }//GEN-LAST:event_btn_salirActionPerformed
 
