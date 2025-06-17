@@ -4,10 +4,8 @@
  */
 package GUI.message;
 
-import GUI.historia.menuHistoria;
-import challenge04.main;
-import static challenge04.main.edu_etapa;
-import static challenge04.main.vidas_historia;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,18 +13,31 @@ import static challenge04.main.vidas_historia;
  */
 public class passMode extends javax.swing.JDialog {
 
-    String imputValue;
+    String inputValue;
+    ImageIcon hoverBtnOkIcon, defaultBtnOKIcon, inputImg, inputActiveImg;
 
     /**
      * Creates new form passMode
      */
     public passMode(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        hoverBtnOkIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-ok-active-sm.png"));
+        defaultBtnOKIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-ok-sm.png"));
+        
+        setUndecorated(true);
+        setLocationRelativeTo(null);
+        setBackground(new Color(0, 0, 0, 0));
+        
         initComponents();
+
+        pnl_principal.setOpaque(false);
+        inputImg = new ImageIcon(getClass().getResource("/imagenes/input-img-sm.png"));
+        inputActiveImg = new ImageIcon(getClass().getResource("/imagenes/input-img-active-sm.png"));
+        txtClave.setOpaque(false);
     }
 
     public String getValue() {
-        return imputValue;
+        return inputValue;
     }
 
     /**
@@ -38,24 +49,31 @@ public class passMode extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        pnl_principal = new javax.swing.JPanel();
+        lbl_titulo = new javax.swing.JLabel();
         Btn_Ingresar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lbl_btn_ingresar = new javax.swing.JLabel();
         txtClave = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_txt_clave = new javax.swing.JLabel();
+        lbl_content = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(300, 150));
+        setMinimumSize(new java.awt.Dimension(300, 150));
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setResizable(false);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 200));
+        pnl_principal.setEnabled(false);
+        pnl_principal.setMaximumSize(new java.awt.Dimension(300, 150));
+        pnl_principal.setMinimumSize(new java.awt.Dimension(300, 150));
+        pnl_principal.setOpaque(false);
+        pnl_principal.setPreferredSize(new java.awt.Dimension(300, 150));
+        pnl_principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Introduzca clave para desbloquear");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        lbl_titulo.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        lbl_titulo.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_titulo.setText("Introduzca clave para desbloquear");
+        pnl_principal.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
         Btn_Ingresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Btn_Ingresar.setForeground(new java.awt.Color(255, 255, 255));
@@ -65,22 +83,60 @@ public class passMode extends javax.swing.JDialog {
         Btn_Ingresar.setContentAreaFilled(false);
         Btn_Ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_Ingresar.setFocusPainted(false);
+        Btn_Ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Btn_IngresarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Btn_IngresarMouseExited(evt);
+            }
+        });
         Btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_IngresarActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 100, 30));
+        pnl_principal.add(Btn_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 110, 40));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn-active.png"))); // NOI18N
-        jLabel3.setText("INGRESAR");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 110, 30));
-        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 146, -1));
+        lbl_btn_ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_btn_ingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/btn-message-ok-sm.png"))); // NOI18N
+        lbl_btn_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnl_principal.add(lbl_btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 110, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-passMode.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 200));
+        txtClave.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        txtClave.setBorder(null);
+        txtClave.setCaretColor(new java.awt.Color(102, 51, 0));
+        txtClave.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtClaveFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtClaveFocusLost(evt);
+            }
+        });
+        txtClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClaveActionPerformed(evt);
+            }
+        });
+        pnl_principal.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 130, -1));
+
+        lbl_txt_clave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/input-img-sm.png"))); // NOI18N
+        pnl_principal.add(lbl_txt_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 170, 60));
+
+        lbl_content.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/content-message-sm.png"))); // NOI18N
+        pnl_principal.add(lbl_content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 300, 110));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -91,11 +147,35 @@ public class passMode extends javax.swing.JDialog {
             customMessage dialog = new customMessage(null, true, "El campo no puede estar vacio");
             dialog.setVisible(true);
         } else {
-            imputValue = txtClave.getText();
-           dispose();
+            inputValue = txtClave.getText();
+            dispose();
         }
 
     }//GEN-LAST:event_Btn_IngresarActionPerformed
+
+    private void Btn_IngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_IngresarMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_ingresar.setIcon(hoverBtnOkIcon);
+    }//GEN-LAST:event_Btn_IngresarMouseEntered
+
+    private void Btn_IngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_IngresarMouseExited
+        // TODO add your handling code here:
+        lbl_btn_ingresar.setIcon(defaultBtnOKIcon);
+    }//GEN-LAST:event_Btn_IngresarMouseExited
+
+    private void txtClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClaveActionPerformed
+
+    private void txtClaveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClaveFocusGained
+        // TODO add your handling code here:
+        lbl_txt_clave.setIcon(inputActiveImg);
+    }//GEN-LAST:event_txtClaveFocusGained
+
+    private void txtClaveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClaveFocusLost
+        // TODO add your handling code here:
+        lbl_txt_clave.setIcon(inputImg);
+    }//GEN-LAST:event_txtClaveFocusLost
 
     /**
      * @param args the command line arguments
@@ -141,10 +221,11 @@ public class passMode extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Ingresar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_btn_ingresar;
+    private javax.swing.JLabel lbl_content;
+    private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_txt_clave;
+    private javax.swing.JPanel pnl_principal;
     private javax.swing.JTextField txtClave;
     // End of variables declaration//GEN-END:variables
 }
