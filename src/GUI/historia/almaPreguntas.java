@@ -7,6 +7,9 @@ package GUI.historia;
 import GUI.message.customMessage;
 import GUI.message.feedbackAlerts;
 import static challenge04.main.*;
+import challenge04.sound;
+import java.awt.*;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -14,6 +17,9 @@ import static challenge04.main.*;
  */
 public class almaPreguntas extends javax.swing.JFrame {
 
+    private Point mouseClickPoint;
+    ImageIcon hoverBtnIcon, defaultBtnIcon, disabledBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
+    
     String[] preguntas = {
         "¿Qué producto se da en su natal Urumita?",
         "El pensamiento que tiene a Alma respecto a esto sería, Que en futuro se podría:",
@@ -42,7 +48,17 @@ public class almaPreguntas extends javax.swing.JFrame {
 
     public almaPreguntas() {
         initComponents();
-        //reproducirSonido();
+        
+        hoverBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-active.png"));
+        defaultBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn.png"));
+        disabledBtnIcon = new ImageIcon(getClass().getResource("/imagenes/btn-disabled.png"));
+
+        hoverBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close-active.png"));
+        defaultBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"));
+        
+        hoverBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini-active.png"));
+        defaultBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"));
+        
         int i = alma_etapa;
         switch (vidas_historia) {
             case 1:
@@ -85,6 +101,9 @@ public class almaPreguntas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
+        pnl_bar = new javax.swing.JPanel();
+        lbl_close_window = new javax.swing.JLabel();
+        lbl_mini_window = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         LbPregunta = new javax.swing.JTextArea();
@@ -115,11 +134,55 @@ public class almaPreguntas extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnl_bar.setOpaque(false);
+        pnl_bar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                pnl_barMouseDragged(evt);
+            }
+        });
+        pnl_bar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnl_barMousePressed(evt);
+            }
+        });
+        pnl_bar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_close_window.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"))); // NOI18N
+        lbl_close_window.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbl_close_window.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_close_windowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_close_windowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_close_windowMouseExited(evt);
+            }
+        });
+        pnl_bar.add(lbl_close_window, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, -1, 50));
+
+        lbl_mini_window.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"))); // NOI18N
+        lbl_mini_window.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_mini_windowMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_mini_windowMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_mini_windowMouseExited(evt);
+            }
+        });
+        pnl_bar.add(lbl_mini_window, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 50, 50));
+
+        jPanel1.add(pnl_bar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alma_Niña .png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 110, 190));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 6, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         LbPregunta.setEditable(false);
         LbPregunta.setColumns(20);
@@ -165,12 +228,20 @@ public class almaPreguntas extends javax.swing.JFrame {
         BtnRespuesta.setContentAreaFilled(false);
         BtnRespuesta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnRespuesta.setFocusPainted(false);
+        BtnRespuesta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BtnRespuestaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnRespuestaMouseExited(evt);
+            }
+        });
         BtnRespuesta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRespuestaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 160, 50));
+        jPanel1.add(BtnRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 180, 40));
 
         lbl_btn_respuesta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn.png"))); // NOI18N
         jPanel1.add(lbl_btn_respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 200, 60));
@@ -203,6 +274,8 @@ public class almaPreguntas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRespuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRespuestaActionPerformed
+        
+        sound.getInstance().reproducirSonido(this, 0);
         int alma_respuesta = 0;
         if (buttonGroup1.getSelection() != null) {
 
@@ -260,6 +333,59 @@ public class almaPreguntas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BtnRespuestaActionPerformed
 
+    private void lbl_close_windowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_close_windowMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_lbl_close_windowMouseClicked
+
+    private void lbl_close_windowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_close_windowMouseEntered
+        // TODO add your handling code here:
+        lbl_close_window.setIcon(hoverBtnCloseIcon);
+    }//GEN-LAST:event_lbl_close_windowMouseEntered
+
+    private void lbl_close_windowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_close_windowMouseExited
+        // TODO add your handling code here:
+        lbl_close_window.setIcon(defaultBtnCloseIcon);
+    }//GEN-LAST:event_lbl_close_windowMouseExited
+
+    private void lbl_mini_windowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_mini_windowMouseClicked
+        // TODO add your handling code here:
+        setState(Frame.ICONIFIED);
+    }//GEN-LAST:event_lbl_mini_windowMouseClicked
+
+    private void lbl_mini_windowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_mini_windowMouseEntered
+        // TODO add your handling code here:
+        lbl_mini_window.setIcon(hoverBtnMiniIcon);
+    }//GEN-LAST:event_lbl_mini_windowMouseEntered
+
+    private void lbl_mini_windowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_mini_windowMouseExited
+        // TODO add your handling code here:
+        lbl_mini_window.setIcon(defaultBtnMiniIcon);
+    }//GEN-LAST:event_lbl_mini_windowMouseExited
+
+    private void pnl_barMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_barMouseDragged
+        // TODO add your handling code here:
+        Point frameLocation = getLocation();
+        int x = frameLocation.x + evt.getX() - mouseClickPoint.x;
+        int y = frameLocation.y + evt.getY() - mouseClickPoint.y;
+        setLocation(x, y);
+    }//GEN-LAST:event_pnl_barMouseDragged
+
+    private void pnl_barMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_barMousePressed
+        // TODO add your handling code here:
+        mouseClickPoint = evt.getPoint();
+    }//GEN-LAST:event_pnl_barMousePressed
+
+    private void BtnRespuestaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRespuestaMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_respuesta.setIcon(hoverBtnIcon);
+    }//GEN-LAST:event_BtnRespuestaMouseEntered
+
+    private void BtnRespuestaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRespuestaMouseExited
+        // TODO add your handling code here:
+        lbl_btn_respuesta.setIcon(defaultBtnIcon);
+    }//GEN-LAST:event_BtnRespuestaMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -311,8 +437,11 @@ public class almaPreguntas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_btn_respuesta;
+    private javax.swing.JLabel lbl_close_window;
+    private javax.swing.JLabel lbl_mini_window;
     private javax.swing.JLabel lbvida1;
     private javax.swing.JLabel lbvida2;
     private javax.swing.JLabel lbvida3;
+    private javax.swing.JPanel pnl_bar;
     // End of variables declaration//GEN-END:variables
 }
