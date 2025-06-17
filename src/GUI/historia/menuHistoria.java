@@ -33,6 +33,10 @@ public class menuHistoria extends javax.swing.JFrame {
         hoverBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini-active.png"));
         defaultBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"));
         
+
+        scrl_message.setOpaque(false);
+        scrl_message.getViewport().setOpaque(false);
+        
         BtnAlma.setText("Alma (ODS 2)");
         if(alma_etapa_bloqueada){
             BtnAlma.setText("Alma (ODS 2) (bloqueado)");
@@ -43,6 +47,10 @@ public class menuHistoria extends javax.swing.JFrame {
         if(edu_etapa_bloqueada){
             BtnEDu.setText("Edu (ODS 4) (bloqueado)");
             lbl_btn_edu.setIcon(disabledBtnIcon);
+        }
+        
+        if(!modo_historia_completa){
+            lbl_palabra_clave.setVisible(false);
         }
     }
 
@@ -69,6 +77,8 @@ public class menuHistoria extends javax.swing.JFrame {
         lbl_btn_volver = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lbl_sound = new javax.swing.JLabel();
+        scrl_message = new javax.swing.JScrollPane();
+        lbl_palabra_clave = new javax.swing.JTextArea();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -240,6 +250,23 @@ public class menuHistoria extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lbl_sound, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 60, 60));
+
+        scrl_message.setBorder(null);
+        scrl_message.setForeground(new java.awt.Color(255, 153, 0));
+        scrl_message.setOpaque(false);
+
+        lbl_palabra_clave.setColumns(20);
+        lbl_palabra_clave.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        lbl_palabra_clave.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_palabra_clave.setLineWrap(true);
+        lbl_palabra_clave.setRows(5);
+        lbl_palabra_clave.setText("¡Felicidades, valiente! Has conquistado el modo historia.\nRecuerda esta palabra sagrada, pues abrirá puertas en el futuro: ARREBOL.");
+        lbl_palabra_clave.setWrapStyleWord(true);
+        lbl_palabra_clave.setBorder(null);
+        lbl_palabra_clave.setOpaque(false);
+        scrl_message.setViewportView(lbl_palabra_clave);
+
+        jPanel1.add(scrl_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 390, 300, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background-historia.png"))); // NOI18N
         jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
@@ -444,7 +471,9 @@ public class menuHistoria extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_btn_volver;
     private javax.swing.JLabel lbl_close_window;
     private javax.swing.JLabel lbl_mini_window;
+    private javax.swing.JTextArea lbl_palabra_clave;
     private javax.swing.JLabel lbl_sound;
     private javax.swing.JPanel pnl_bar;
+    private javax.swing.JScrollPane scrl_message;
     // End of variables declaration//GEN-END:variables
 }
