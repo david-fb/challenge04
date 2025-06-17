@@ -5,6 +5,8 @@
 package GUI;
 
 import GUI.historia.menuHistoria;
+import GUI.message.customMessage;
+import GUI.message.passMode;
 import java.awt.*;
 import javax.swing.ImageIcon;
 import static challenge04.main.*;
@@ -18,7 +20,7 @@ public class menu extends javax.swing.JFrame {
 
     private Point mouseClickPoint;
     ImageIcon hoverBtnIcon, defaultBtnIcon, disabledBtnIcon, hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnMiniIcon, defaultBtnMiniIcon;
-    
+
     /**
      * Creates new form menu
      */
@@ -30,18 +32,18 @@ public class menu extends javax.swing.JFrame {
 
         hoverBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close-active.png"));
         defaultBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"));
-        
+
         hoverBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini-active.png"));
         defaultBtnMiniIcon = new ImageIcon(getClass().getResource("/imagenes/bar/btn-icon-mini.png"));
-        
-        if(!modo_historia_completa){
+
+        if (!modo_historia_completa) {
             lbl_btn_jugador1.setIcon(disabledBtnIcon);
             btn_jugador1.setText("JUGADOR 1 (bloqueado)");
-            
+
             lbl_btn_versus.setIcon(disabledBtnIcon);
             btn_versus.setText("VERSUS (bloqueado)");
         }
-        
+
         lbl_sound.setIcon(sound.getInstance().getImageIcon());
     }
 
@@ -264,24 +266,50 @@ public class menu extends javax.swing.JFrame {
         cerrarsesion();
         Login.setVisible(true);
     }//GEN-LAST:event_btn_salirActionPerformed
+    private void desbloquear() {
+        if (!modo_historia_completa) {
+            passMode pass = new passMode(this, true);
+            pass.setVisible(true);
 
+            if ("ARREBOL".equals(pass.getValue())) {
+                modo_historia_completa = true;
+                customMessage dialog = new customMessage(null, true, "Clave Correcta");
+                dialog.setVisible(true);
+                lbl_btn_jugador1.setIcon(defaultBtnIcon);
+                btn_jugador1.setText("JUGADOR 1");
+
+                lbl_btn_versus.setIcon(defaultBtnIcon);
+                btn_versus.setText("VERSUS");
+
+            } else {
+                customMessage dialog = new customMessage(null, true, "Clave erronea");
+                dialog.setVisible(true);
+
+            }
+
+        }
+
+    }
     private void btn_jugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jugador1ActionPerformed
         // TODO add your handling code here:
-        if(!modo_historia_completa){
+        sound.getInstance().reproducirSonido(this, 0);
+        if (!modo_historia_completa) {
+            desbloquear();
             return;
         }
-        sound.getInstance().reproducirSonido(this, 0);
+
         dispose();
         modojugador modoJugador = new modojugador(false);
         modoJugador.setVisible(true);
     }//GEN-LAST:event_btn_jugador1ActionPerformed
 
     private void btn_versusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_versusActionPerformed
-        // TODO add your handling code here:
-        if(!modo_historia_completa){
+        sound.getInstance().reproducirSonido(this, 0);
+        if (!modo_historia_completa) {
+            desbloquear();
             return;
         }
-        sound.getInstance().reproducirSonido(this, 0);
+
         dispose();
         modojugador modoJugador = new modojugador(true);
         modoJugador.setVisible(true);
@@ -306,7 +334,7 @@ public class menu extends javax.swing.JFrame {
 
     private void btn_jugador1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_jugador1MouseEntered
         // TODO add your handling code here:
-        if(!modo_historia_completa){
+        if (!modo_historia_completa) {
             return;
         }
         lbl_btn_jugador1.setIcon(hoverBtnIcon);
@@ -314,7 +342,7 @@ public class menu extends javax.swing.JFrame {
 
     private void btn_jugador1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_jugador1MouseExited
         // TODO add your handling code here:
-        if(!modo_historia_completa){
+        if (!modo_historia_completa) {
             return;
         }
         lbl_btn_jugador1.setIcon(defaultBtnIcon);
@@ -322,7 +350,7 @@ public class menu extends javax.swing.JFrame {
 
     private void btn_versusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_versusMouseEntered
         // TODO add your handling code here:
-        if(!modo_historia_completa){
+        if (!modo_historia_completa) {
             return;
         }
         lbl_btn_versus.setIcon(hoverBtnIcon);
@@ -330,7 +358,7 @@ public class menu extends javax.swing.JFrame {
 
     private void btn_versusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_versusMouseExited
         // TODO add your handling code here:
-        if(!modo_historia_completa){
+        if (!modo_historia_completa) {
             return;
         }
         lbl_btn_versus.setIcon(defaultBtnIcon);
