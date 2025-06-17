@@ -4,6 +4,7 @@
  */
 package GUI.message;
 
+import challenge04.sound;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -16,21 +17,31 @@ public class feedbackAlerts extends javax.swing.JDialog {
     /**
      * Creates new form feedbackAlerts
      */
+    ImageIcon hoverBtnCloseIcon, defaultBtnCloseIcon, hoverBtnOkIcon, defaultBtnOKIcon;
+
     public feedbackAlerts(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
+
     public feedbackAlerts(java.awt.Frame parent, boolean modal, String message) {
         super(parent, modal);
-        
+
+        hoverBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close-active.png"));
+        defaultBtnCloseIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"));
+
+        hoverBtnOkIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-ok-active-sm.png"));
+        defaultBtnOKIcon = new ImageIcon(getClass().getResource("/imagenes/message/btn-message-ok-sm.png"));
+
         setUndecorated(true);
         setLocationRelativeTo(null);
         setBackground(new Color(0, 0, 0, 0));
-        
+
         initComponents();
         txt_message.setText(message);
-        
-        
+        scroll_text.setOpaque(false);
+        scroll_text.getViewport().setOpaque(false);
+
     }
 
     /**
@@ -42,42 +53,128 @@ public class feedbackAlerts extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        lbl_cerrar = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
+        lbl_btn_ok = new javax.swing.JLabel();
+        scroll_text = new javax.swing.JScrollPane();
         txt_message = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMinimumSize(new java.awt.Dimension(311, 326));
+        setResizable(false);
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(311, 326));
+        jPanel1.setMinimumSize(new java.awt.Dimension(311, 326));
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(311, 326));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/btn-message-close.png"))); // NOI18N
+        lbl_cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_cerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_cerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbl_cerrarMouseExited(evt);
+            }
+        });
+        jPanel1.add(lbl_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 50, 50));
+
+        btnAceptar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptar.setText("Aceptar");
+        btnAceptar.setBorder(null);
+        btnAceptar.setBorderPainted(false);
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAceptar.setFocusPainted(false);
+        btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAceptarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAceptarMouseExited(evt);
+            }
+        });
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 130, 20));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 110, 40));
+
+        lbl_btn_ok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/btn-message-ok-sm.png"))); // NOI18N
+        jPanel1.add(lbl_btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 120, 40));
+
+        scroll_text.setBorder(null);
 
         txt_message.setEditable(false);
-        txt_message.setBackground(new java.awt.Color(0, 51, 51));
         txt_message.setColumns(20);
         txt_message.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_message.setForeground(new java.awt.Color(255, 255, 255));
         txt_message.setLineWrap(true);
         txt_message.setRows(5);
         txt_message.setWrapStyleWord(true);
+        txt_message.setBorder(null);
         txt_message.setOpaque(false);
-        getContentPane().add(txt_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 370, 180));
+        scroll_text.setViewportView(txt_message);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/pizarra.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -80, 500, 490));
+        jPanel1.add(scroll_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 230, 110));
+
+        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/message/background-pizarra.png"))); // NOI18N
+        jPanel1.add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 310));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-     dispose();
+        sound.getInstance().reproducirSonido(this, 0);
+        dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void lbl_cerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_cerrarMouseEntered
+        // TODO add your handling code here:
+        lbl_cerrar.setIcon(hoverBtnCloseIcon);
+    }//GEN-LAST:event_lbl_cerrarMouseEntered
+
+    private void lbl_cerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_cerrarMouseExited
+        // TODO add your handling code here:
+        lbl_cerrar.setIcon(defaultBtnCloseIcon);
+    }//GEN-LAST:event_lbl_cerrarMouseExited
+
+    private void btnAceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseEntered
+        // TODO add your handling code here:
+        lbl_btn_ok.setIcon(hoverBtnOkIcon);
+    }//GEN-LAST:event_btnAceptarMouseEntered
+
+    private void btnAceptarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseExited
+        // TODO add your handling code here:
+        lbl_btn_ok.setIcon(defaultBtnOKIcon);
+    }//GEN-LAST:event_btnAceptarMouseExited
+
+    private void lbl_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_cerrarMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_lbl_cerrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -123,7 +220,11 @@ public class feedbackAlerts extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_background;
+    private javax.swing.JLabel lbl_btn_ok;
+    private javax.swing.JLabel lbl_cerrar;
+    private javax.swing.JScrollPane scroll_text;
     private javax.swing.JTextArea txt_message;
     // End of variables declaration//GEN-END:variables
 }
